@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -53,6 +53,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.MediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +76,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.MediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.lblVol = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -86,12 +88,13 @@
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer2)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -253,7 +256,6 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel4.Controls.Add(this.MediaPlayer2);
             this.panel4.Controls.Add(this.treeView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -273,15 +275,24 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Folders";
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode4});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 600);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            // 
+            // MediaPlayer2
+            // 
+            this.MediaPlayer2.Enabled = true;
+            this.MediaPlayer2.Location = new System.Drawing.Point(-1, 3);
+            this.MediaPlayer2.Name = "MediaPlayer2";
+            this.MediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MediaPlayer2.OcxState")));
+            this.MediaPlayer2.Size = new System.Drawing.Size(943, 146);
+            this.MediaPlayer2.TabIndex = 24;
             // 
             // panel2
             // 
@@ -496,13 +507,15 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label3.Location = new System.Drawing.Point(883, 9);
+            this.label3.Location = new System.Drawing.Point(810, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 24);
             this.label3.TabIndex = 15;
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.trackBar1);
+            this.panel3.Controls.Add(this.lblVol);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.txtSearch);
             this.panel3.Controls.Add(this.pictureBox3);
@@ -515,20 +528,34 @@
             this.panel3.Controls.Add(this.btnPrev);
             this.panel3.Controls.Add(this.btnNext);
             this.panel3.Controls.Add(this.btnPlay);
+            this.panel3.Controls.Add(this.MediaPlayer2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 24);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(942, 117);
             this.panel3.TabIndex = 19;
             // 
-            // MediaPlayer2
+            // trackBar1
             // 
-            this.MediaPlayer2.Enabled = true;
-            this.MediaPlayer2.Location = new System.Drawing.Point(-1, -20);
-            this.MediaPlayer2.Name = "MediaPlayer2";
-            this.MediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MediaPlayer2.OcxState")));
-            this.MediaPlayer2.Size = new System.Drawing.Size(75, 55);
-            this.MediaPlayer2.TabIndex = 24;
+            this.trackBar1.Location = new System.Drawing.Point(897, 3);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar1.Size = new System.Drawing.Size(45, 82);
+            this.trackBar1.TabIndex = 26;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lblVol
+            // 
+            this.lblVol.AutoSize = true;
+            this.lblVol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVol.ForeColor = System.Drawing.Color.White;
+            this.lblVol.Location = new System.Drawing.Point(863, 82);
+            this.lblVol.Name = "lblVol";
+            this.lblVol.Size = new System.Drawing.Size(55, 17);
+            this.lblVol.TabIndex = 25;
+            this.lblVol.Text = "Volume";
             // 
             // btnSearch
             // 
@@ -543,12 +570,11 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(737, 76);
+            this.txtSearch.Location = new System.Drawing.Point(717, 76);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(127, 23);
             this.txtSearch.TabIndex = 22;
             this.txtSearch.Text = "Search by Title";
-            this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // pictureBox3
@@ -606,6 +632,7 @@
             this.panel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -613,7 +640,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -676,6 +703,8 @@
         private AxWMPLib.AxWindowsMediaPlayer MediaPlayer2;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Label lblVol;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

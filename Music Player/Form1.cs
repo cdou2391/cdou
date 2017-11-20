@@ -7,6 +7,7 @@ using System.Linq;
 using System.Collections;
 using System.Diagnostics;
 using NAudio.Wave;
+using System.Runtime.InteropServices;
 
 namespace Music_Player
 {
@@ -103,6 +104,12 @@ namespace Music_Player
                 pictureBox1.Visible = true;
                 pictureBox1.Image = dataS.songAlbumArt(songPath);
                 label3.Text = dataS.songLength(songPath).ToString(@"mm\:ss");
+
+                waveOutDevice.Volume = (float)0.4;
+                int vol = (int)(waveOutDevice.Volume * 100);
+                trackBar1.Value = vol;
+                lblVol.Text = Convert.ToString("Vol: " + trackBar1.Value + "%");
+
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
             }
@@ -435,8 +442,9 @@ namespace Music_Player
             //stop playing music
             btnPlay.Visible = true;
             btnPause.Visible = false;
-            int position = reader.TotalTime.Seconds;
-            MessageBox.Show(position.ToString());
+            //double position = waveOutDevice.GetPosition();
+            //double duration  = reader.TotalTime.TotalSeconds;
+            //MessageBox.Show(position.ToString());
             waveOutDevice.Dispose();
         }
         Random rnd = new Random();
@@ -721,19 +729,45 @@ namespace Music_Player
         //}
         //void trackBarControl()
         //{
-        //    trackBar1.Maximum =reader.TotalTime.Seconds;
+        //    trackBar1.Maximum = (int)reader.TotalTime.TotalSeconds;
         //    trackBar1.Minimum = 0;
         //    timer3.Start();
         //}
 
-        //private void trackBar1_Scroll_1(object sender, EventArgs e)
+        //private void trackBar1_Scroll(object sender, EventArgs e)
         //{
-        //    MediaPlayer2.Ctlcontrols.currentMarker = (int)trackBar1.Value;
+        //    trackBar1.Maximum = (int)reader.TotalTime.TotalMilliseconds;
+        //    trackBar1.Minimum = 0;
+        //    double songProgress = waveOutDevice.GetPosition();
+        //    trackBar1.Value = (int)songProgress;
         //}
 
         //private void timer3_Tick(object sender, EventArgs e)
         //{
         //    trackBar1.Value = (int)waveOutDevice.GetPosition();
         //}
+
+
+        // Manage the volume
+        public static class NativeMethods
+        {
+            //Winm WindowsSound
+            [DllImport("winmm.dll")]
+            internal static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
+            [DllImport("winmm.dll")]
+            internal static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            uint CurrVol;
+            NativeMethods.waveOutGetVolume(IntPtr.Zero, out CurrVol);
+            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
+            int NewVolume = ((ushort.MaxValue / 100) * trackBar1.Value);
+            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
+            NativeMethods.waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+            lblVol.Text = Convert.ToString("Vol: " + trackBar1.Value + "%");
+        }
+
     }
 }
