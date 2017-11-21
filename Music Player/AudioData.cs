@@ -105,9 +105,6 @@ namespace Music_Player
         public string dateModified(string songFile)
         {
             var songMod = System.IO.File.GetLastWriteTime(songFile);
-            //FileInfo Finf = new FileInfo(songFile);
-
-            //string dateSong=Finf.
             return songMod.ToString("yyyy/MM/dd");
         }
     }

@@ -13,14 +13,10 @@ namespace Music_Player
 {
     public partial class Form1 : Form
     {
-        //WindowsMediaPlayer wPlayer = new WindowsMediaPlayer();
    
         public Form1()
         {
             InitializeComponent();
-            //loading frm2 = new loading();
-            //Form1 frm1 = new Form1();
-
         }
         
         
@@ -439,12 +435,8 @@ namespace Music_Player
 
         private void bntStop_Click(object sender, EventArgs e)
         {
-            //stop playing music
             btnPlay.Visible = true;
             btnPause.Visible = false;
-            //double position = waveOutDevice.GetPosition();
-            //double duration  = reader.TotalTime.TotalSeconds;
-            //MessageBox.Show(position.ToString());
             waveOutDevice.Dispose();
         }
         Random rnd = new Random();
