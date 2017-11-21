@@ -5,14 +5,11 @@ using System.IO;
 using TagLib;
 using System.Drawing;
 using System.Media;
-using System.Web.Services;
 
 namespace Music_Player
 {
     class AudioData
     {
-        string lyricsPath = "http://api.chartlyrics.com/apiv1.asmx/";
-        WebService lyricsSearch = new WebService();
         
 
         public string songTitle(string songFile)
@@ -99,6 +96,7 @@ namespace Music_Player
         {
             TagLib.File song = TagLib.File.Create(songFile);
             string songLrc = song.Tag.Lyrics;
+
             if (songLrc == null)
             {
                 songLrc = "No Lyrics available for this song";
