@@ -32,5 +32,15 @@ namespace Music_Player.Properties {
                 return ((string)(this["Database1ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.chartlyrics.com/apiv1.asmx")]
+        public string Music_Player_com_chartlyrics_api_apiv1 {
+            get {
+                return ((string)(this["Music_Player_com_chartlyrics_api_apiv1"]));
+            }
+        }
     }
 }

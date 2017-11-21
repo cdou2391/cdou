@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using TagLib;
 using System.Drawing;
 using System.Media;
+using System.Web.Services;
 
 namespace Music_Player
 {
     class AudioData
     {
+        string lyricsPath = "http://api.chartlyrics.com/apiv1.asmx/";
+        WebService lyricsSearch = new WebService();
+        
+
         public string songTitle(string songFile)
         {
             TagLib.File song = TagLib.File.Create(songFile);

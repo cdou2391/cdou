@@ -438,6 +438,10 @@ namespace Music_Player
             btnPlay.Visible = true;
             btnPause.Visible = false;
             waveOutDevice.Dispose();
+
+            //string lyricsPath = "http://api.chartlyrics.com/apiv1.asmx/";
+            com.chartlyrics.api.GetLyricResult searchlyrics = new com.chartlyrics.api.GetLyricResult();
+
         }
         Random rnd = new Random();
        
