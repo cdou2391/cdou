@@ -10,8 +10,6 @@ namespace Music_Player
 {
     class AudioData
     {
-        
-
         public string songTitle(string songFile)
         {
             TagLib.File song = TagLib.File.Create(songFile);
@@ -22,6 +20,7 @@ namespace Music_Player
                 songT = fileInfo.Name;
             }
             return songT;
+            
         }
         public string songArtist(string songFile)
         {

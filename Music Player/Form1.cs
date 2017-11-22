@@ -8,6 +8,7 @@ using System.Collections;
 using System.Diagnostics;
 using NAudio.Wave;
 using System.Runtime.InteropServices;
+using Music_Player.ChatLyrics;
 
 namespace Music_Player
 {
@@ -27,6 +28,8 @@ namespace Music_Player
         internal static string songSel;
         bool shuffleOn = false;
         Mp3FileReader reader;
+        internal string songPath;
+        
 
         WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
@@ -81,25 +84,25 @@ namespace Music_Player
                 }
             }
         }
-        public void songPlay(string songPath)
+        public void songPlay(string songPath1)
         {
             try
             {
                 waveOutDevice.Dispose();
                 
-                reader = new Mp3FileReader(songPath);
+                reader = new Mp3FileReader(songPath1);
                 waveOutDevice.Init(reader);
                 waveOutDevice.Play();
-                string[] songMetaData = { dataS.songTitle(songPath), dataS.songArtist(songPath), dataS.songLength(songPath).ToString(@"mm\:ss") };
-                FileInfo fileInfo = new FileInfo(songPath);
-                label1.Text = dataS.songTitle(songPath) + " - " + dataS.songArtist(songPath);
+                string[] songMetaData = { dataS.songTitle(songPath1), dataS.songArtist(songPath1), dataS.songLength(songPath1).ToString(@"mm\:ss") };
+                FileInfo fileInfo = new FileInfo(songPath1);
+                label1.Text = dataS.songTitle(songPath1) + " - " + dataS.songArtist(songPath1);
 
                 richTextBox1.Enabled = true;
-                richTextBox1.Text = dataS.songLyrics(songPath);
+                richTextBox1.Text = dataS.songLyrics(songPath1);
 
                 pictureBox1.Visible = true;
-                pictureBox1.Image = dataS.songAlbumArt(songPath);
-                label3.Text = dataS.songLength(songPath).ToString(@"mm\:ss");
+                pictureBox1.Image = dataS.songAlbumArt(songPath1);
+                label3.Text = dataS.songLength(songPath1).ToString(@"mm\:ss");
 
                 waveOutDevice.Volume = (float)0.4;
                 int vol = (int)(waveOutDevice.Volume * 100);
@@ -119,7 +122,7 @@ namespace Music_Player
         {
             try
             {
-                string songPath = listView1.SelectedItems[0].Text;
+                songPath = listView1.SelectedItems[0].Text;
                 songPlay(songPath);
             }
             catch(Exception ex)
@@ -134,7 +137,7 @@ namespace Music_Player
         {
             try
             {
-                string songPath = listView1.SelectedItems[0].Text;
+                songPath = listView1.SelectedItems[0].Text;
                 songPlay(songPath);
             }
             catch (Exception ex)
@@ -421,7 +424,7 @@ namespace Music_Player
                 }
                 else
                 {
-                    string songPath = listView1.SelectedItems[0].Text;
+                    songPath = listView1.SelectedItems[0].Text;
                     songPlay(songPath);
                 }
             }
@@ -439,9 +442,6 @@ namespace Music_Player
             btnPause.Visible = false;
             waveOutDevice.Dispose();
 
-            //string lyricsPath = "http://api.chartlyrics.com/apiv1.asmx/";
-            com.chartlyrics.api.GetLyricResult searchlyrics = new com.chartlyrics.api.GetLyricResult();
-
         }
         Random rnd = new Random();
        
@@ -454,9 +454,8 @@ namespace Music_Player
                 int rndIndex = rnd.Next(0, listView1.Items.Count - 1);
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
-                var nowSong = MediaPlayer2.currentMedia.sourceURL;
-                var songPlay2 = listView1.FindItemWithText(nowSong);
-                int songIndex = listView1.Items.IndexOf(songPlay2);
+                var nowSong = listView1.FindItemWithText(dataS.songTitle(songPath)); 
+                int songIndex = listView1.Items.IndexOf(nowSong);
                 listView1.Items[songIndex].Selected = false;
 
                 if (songIndex == listView1.Items.Count-1)
@@ -476,25 +475,9 @@ namespace Music_Player
                 listView1.Items[songIndex].Selected = true;
                 listView1.Select();
             
-                string songPath = listView1.Items[songIndex].Text;
-                songPlay(songPath);
-                //MediaPlayer2.URL = songPath;
-                //string[] songMetaData = { dataS.songTitle(songPath), dataS.songArtist(songPath), dataS.songLength(songPath).ToString(@"mm\:ss") };
-                //FileInfo fileInfo = new FileInfo(songPath);
-                //label1.Text =dataS.songTitle(songPath) + " - " + dataS.songArtist(songPath);
-
-                //richTextBox1.Enabled = true;
-                //richTextBox1.Text = dataS.songLyrics(songPath);
-
-                //pictureBox1.Visible = true;
-                //pictureBox1.Image = dataS.songAlbumArt(songPath);
-
-                //MediaPlayer2.currentPlaylist.appendItem(MediaPlayer2.currentMedia);
-
-                //double currentPos = MediaPlayer2.Ctlcontrols.currentPosition;
-                //label3.Text = dataS.songLength(songPath).ToString(@"mm\:ss");
-                //btnPlay.Visible = false;
-                //btnPause.Visible = true;
+                string songPath1 = listView1.Items[songIndex].Text;
+                songPlay(songPath1);
+                songPath = songPath1;
             }
             catch (Exception)
             {
@@ -511,11 +494,10 @@ namespace Music_Player
             {
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
-                var nowSong = MediaPlayer2.currentMedia.sourceURL;
-                //var nowPlaying=waveOutDevice.
-                var songPlay2 = listView1.FindItemWithText(nowSong);
-                int songIndex = listView1.Items.IndexOf(songPlay2);
+                var nowSong = listView1.FindItemWithText(dataS.songTitle(songPath));
+                int songIndex = listView1.Items.IndexOf(nowSong);
                 listView1.Items[songIndex].Selected = false;
+
                 if (songIndex == 0)
                 {
                     songIndex = listView1.Items.Count - 1;
@@ -529,26 +511,9 @@ namespace Music_Player
 
                 listView1.Select();
             
-                string songPath = listView1.Items[songIndex].Text;
-                songPlay(songPath);
-
-                //MediaPlayer2.URL = songPath;
-                //string[] songMetaData = { dataS.songTitle(songPath), dataS.songArtist(songPath), dataS.songLength(songPath).ToString(@"mm\:ss") };
-                //FileInfo fileInfo = new FileInfo(songPath);
-                //label1.Text = dataS.songTitle(songPath) + " - " + dataS.songArtist(songPath);
-
-                //richTextBox1.Enabled = true;
-                //richTextBox1.Text = dataS.songLyrics(songPath);
-
-                //pictureBox1.Visible = true;
-                //pictureBox1.Image = dataS.songAlbumArt(songPath);
-
-                //MediaPlayer2.currentPlaylist.appendItem(MediaPlayer2.currentMedia);
-
-                //double currentPos = MediaPlayer2.Ctlcontrols.currentPosition;
-                //label3.Text = dataS.songLength(songPath).ToString(@"mm\:ss");
-                //btnPlay.Visible = false;
-                //btnPause.Visible = true;
+                string songPath1 = listView1.Items[songIndex].Text;
+                songPlay(songPath1);
+                songPath = songPath1;
             }
             catch (Exception)
             {
@@ -635,35 +600,42 @@ namespace Music_Player
         
         private void treeView1_DoubleClick(object sender, EventArgs e)
         {
-            string songPath = treeView1.SelectedNode.Text ;
-            listView1.Items.Clear();
-            files = getFiles.GetFiles(songPath);
-            int x = 0;
-            foreach (var fil in files)
+            try
             {
-                FileInfo fileInfo = new FileInfo(fil);
-                try
+                string songPath = treeView1.SelectedNode.Text;
+                listView1.Items.Clear();
+                files = getFiles.GetFiles(songPath);
+                int x = 0;
+                foreach (var fil in files)
                 {
-                    string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                    FileInfo fileInfo = new FileInfo(fil);
+                    try
+                    {
+                        string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
                             dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
                             dataS.dateModified(fil)};
 
-                    listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                    x++;
+                        listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                        x++;
+                    }
+                    catch (Exception)
+                    {
+                        listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                        x++;
+                    }
+                    if (x % 1500 == 0)
+                    {
+                        MessageBox.Show(x + " songs have loaded so far!");
+                    }
+                    else if (x == files.Count())
+                    {
+                        MessageBox.Show("Done! All " + x + " songs have been loaded");
+                    }
                 }
-                catch (Exception)
-                {
-                    listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                    x++;
-                }
-                if (x % 1500 == 0)
-                {
-                    MessageBox.Show(x + " songs have loaded so far!");
-                }
-                else if (x == files.Count())
-                {
-                    MessageBox.Show("Done! All " + x + " songs have been loaded");
-                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please select a valid folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
