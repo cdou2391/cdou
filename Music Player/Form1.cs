@@ -18,6 +18,7 @@ namespace Music_Player
         public Form1()
         {
             InitializeComponent();
+            this.Text = Application.ProductName + " " + Application.ProductVersion;
         }
         
         
@@ -29,8 +30,9 @@ namespace Music_Player
         bool shuffleOn = false;
         AudioFileReader reader;
         internal string songPath;
-        
 
+       
+       
         WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
 
@@ -45,6 +47,8 @@ namespace Music_Player
             timer3.Interval = 1000;
             this.treeView1.Nodes.Add(TraverseDirectory(@"A:\Music\"));
             //timer.Stop()
+
+            
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -312,95 +316,6 @@ namespace Music_Player
                 }
             }
         }
-
-        private void MediaPlayer2_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            if (shuffleOn == false)
-            {
-                //play the next song automaticaly when the previous ends
-                if (MediaPlayer2.playState == WMPLib.WMPPlayState.wmppsMediaEnded)
-                {
-                    btnPlay.Visible = false;
-                    btnPause.Visible = true;
-                    var nowSong = MediaPlayer2.currentMedia.sourceURL;
-                    var songPlay = listView1.FindItemWithText(nowSong);
-
-                    int songIndex = listView1.Items.IndexOf(songPlay);
-                    listView1.Items[songIndex].Selected = false;
-
-                    if (songIndex == listView1.Items.Count - 1)
-                    {
-                        songIndex = 0;
-                    }
-                    else
-                    {
-                        songIndex = songIndex + 1;
-                    }
-                    listView1.Items[songIndex].Selected = true;
-                    listView1.Select();
-                    try
-                    {
-                        string songPath = listView1.Items[songIndex].Text;
-
-                        MediaPlayer2.URL = songPath;
-                        string[] songMetaData = { dataS.songTitle(songPath), dataS.songArtist(songPath), dataS.songLength(songPath).ToString(@"mm\:ss") };
-                        FileInfo fileInfo = new FileInfo(songPath);
-                        label1.Text = dataS.songTitle(songPath) + " - " + dataS.songArtist(songPath);
-
-                        richTextBox1.Enabled = true;
-                        richTextBox1.Text = dataS.songLyrics(songPath);
-                        pictureBox1.Visible = true;
-                        pictureBox1.Image = dataS.songAlbumArt(songPath);
-
-                        MediaPlayer2.currentPlaylist.appendItem(MediaPlayer2.currentMedia);
-
-                        double currentPos = MediaPlayer2.Ctlcontrols.currentPosition;
-                        label3.Text = dataS.songLength(songPath).ToString(@"mm\:ss");
-                        btnPlay.Visible = false;
-                        btnPause.Visible = true;
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Please choose a song to play first");
-                    }
-                }
-            }
-
-            else if (shuffleOn == true)
-            {
-                if (MediaPlayer2.playState == WMPLib.WMPPlayState.wmppsMediaEnded)
-                {
-                    //var nowSong = MediaPlayer2.currentMedia.sourceURL;
-                    //var songPlay = listView1.FindItemWithText(nowSong);
-                    //int songIndex = listView1.Items.IndexOf(songPlay);
-                    //listView1.Items[songIndex].Selected = false;
-
-                    Random rnd = new Random();
-                    int index = rnd.Next(0, listView1.Items.Count - 1);
-                    listView1.Items[index].Selected = true;
-                    listView1.Select();
-                    string songPath = listView1.Items[index].Text;
-                    songPlay(songPath);
-                    //string[] songMetaData = { dataS.songTitle(songPath), dataS.songArtist(songPath), dataS.songLength(songPath).ToString(@"mm\:ss") };
-                    //FileInfo fileInfo = new FileInfo(songPath);
-                    //label1.Text = dataS.songTitle(songPath) + " - " + dataS.songArtist(songPath);
-
-                    //richTextBox1.Enabled = true;
-                    //richTextBox1.Text = dataS.songLyrics(songPath);
-                    //pictureBox1.Visible = true;
-                    //pictureBox1.Image = dataS.songAlbumArt(songPath);
-
-                    //MediaPlayer2.currentPlaylist.appendItem(MediaPlayer2.currentMedia);
-
-                    //double currentPos = MediaPlayer2.Ctlcontrols.currentPosition;
-                    //label3.Text = dataS.songLength(songPath).ToString(@"mm\:ss");
-                    //btnPlay.Visible = false;
-                    //btnPause.Visible = true;
-                }
-            }
-        }
-        
-
         private void btnPause_Click(object sender, EventArgs e)
         {
             //pause the palying song
@@ -547,7 +462,7 @@ namespace Music_Player
             if (spacePressed == true)
             {
                 e.Handled = true;
-                MediaPlayer2.Ctlcontrols.pause();
+                //MediaPlayer2.Ctlcontrols.pause();
             }
         }
 
@@ -639,7 +554,7 @@ namespace Music_Player
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Please select a valid folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\r\nPlease select a valid folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -742,5 +657,6 @@ namespace Music_Player
                 btnNext.PerformClick();
             }
         }
+        
     }
 }

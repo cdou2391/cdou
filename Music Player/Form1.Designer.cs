@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -53,7 +53,6 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.MediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,29 +75,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.lblVol = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.timer4 = new System.Windows.Forms.Timer(this.components);
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer2)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -126,6 +123,7 @@
             this.colYear,
             this.colDateMod});
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.ForeColor = System.Drawing.Color.White;
             this.listView1.FullRowSelect = true;
@@ -277,24 +275,15 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Folders";
+            treeNode6.Name = "Node0";
+            treeNode6.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode6});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 600);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
-            // 
-            // MediaPlayer2
-            // 
-            this.MediaPlayer2.Enabled = true;
-            this.MediaPlayer2.Location = new System.Drawing.Point(-1, 3);
-            this.MediaPlayer2.Name = "MediaPlayer2";
-            this.MediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MediaPlayer2.OcxState")));
-            this.MediaPlayer2.Size = new System.Drawing.Size(943, 146);
-            this.MediaPlayer2.TabIndex = 24;
             // 
             // panel2
             // 
@@ -409,7 +398,7 @@
             this.btnPlay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlay.ForeColor = System.Drawing.Color.White;
-            this.btnPlay.Location = new System.Drawing.Point(195, 76);
+            this.btnPlay.Location = new System.Drawing.Point(203, 69);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(75, 23);
             this.btnPlay.TabIndex = 14;
@@ -425,7 +414,7 @@
             this.btnNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(276, 76);
+            this.btnNext.Location = new System.Drawing.Point(284, 69);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 16;
@@ -441,7 +430,7 @@
             this.btnPrev.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrev.ForeColor = System.Drawing.Color.White;
-            this.btnPrev.Location = new System.Drawing.Point(114, 76);
+            this.btnPrev.Location = new System.Drawing.Point(122, 69);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(75, 23);
             this.btnPrev.TabIndex = 17;
@@ -457,7 +446,7 @@
             this.bntStop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.bntStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntStop.ForeColor = System.Drawing.Color.White;
-            this.bntStop.Location = new System.Drawing.Point(357, 76);
+            this.bntStop.Location = new System.Drawing.Point(365, 69);
             this.bntStop.Name = "bntStop";
             this.bntStop.Size = new System.Drawing.Size(75, 23);
             this.bntStop.TabIndex = 18;
@@ -473,7 +462,7 @@
             this.btnPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause.ForeColor = System.Drawing.Color.White;
-            this.btnPause.Location = new System.Drawing.Point(197, 76);
+            this.btnPause.Location = new System.Drawing.Point(203, 69);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(75, 23);
             this.btnPause.TabIndex = 15;
@@ -485,9 +474,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(105, 105);
+            this.pictureBox1.Size = new System.Drawing.Size(115, 117);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -531,49 +520,16 @@
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.MediaPlayer2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 24);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(942, 117);
             this.panel3.TabIndex = 19;
             // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(897, 3);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 82);
-            this.trackBar1.TabIndex = 26;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // lblVol
-            // 
-            this.lblVol.AutoSize = true;
-            this.lblVol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVol.ForeColor = System.Drawing.Color.White;
-            this.lblVol.Location = new System.Drawing.Point(863, 82);
-            this.lblVol.Name = "lblVol";
-            this.lblVol.Size = new System.Drawing.Size(55, 17);
-            this.lblVol.TabIndex = 25;
-            this.lblVol.Text = "Volume";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(609, 76);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 23;
-            this.btnSearch.Text = "search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Visible = false;
-            // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(717, 76);
+            this.txtSearch.Location = new System.Drawing.Point(719, 69);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(127, 23);
             this.txtSearch.TabIndex = 22;
@@ -583,7 +539,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(438, 69);
+            this.pictureBox3.Location = new System.Drawing.Point(446, 62);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(30, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -592,10 +548,53 @@
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             this.pictureBox3.MouseHover += new System.EventHandler(this.pictureBox3_MouseHover);
             // 
+            // trackBar2
+            // 
+            this.trackBar2.BackColor = System.Drawing.Color.Black;
+            this.trackBar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trackBar2.Location = new System.Drawing.Point(113, 94);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(839, 45);
+            this.trackBar2.TabIndex = 27;
+            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(897, 0);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar1.Size = new System.Drawing.Size(45, 76);
+            this.trackBar1.TabIndex = 26;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lblVol
+            // 
+            this.lblVol.AutoSize = true;
+            this.lblVol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVol.ForeColor = System.Drawing.Color.White;
+            this.lblVol.Location = new System.Drawing.Point(863, 75);
+            this.lblVol.Name = "lblVol";
+            this.lblVol.Size = new System.Drawing.Size(55, 17);
+            this.lblVol.TabIndex = 25;
+            this.lblVol.Text = "Volume";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(611, 69);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 23;
+            this.btnSearch.Text = "search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(438, 69);
+            this.pictureBox2.Location = new System.Drawing.Point(446, 62);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -611,15 +610,6 @@
             // timer3
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.Location = new System.Drawing.Point(-8, 101);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(943, 45);
-            this.trackBar2.TabIndex = 27;
-            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // Form1
             // 
@@ -648,7 +638,6 @@
             this.panel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -656,10 +645,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -708,7 +697,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ToolStripMenuItem editPropertiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showNowPlayingToolStripMenuItem;
-        internal AxWMPLib.AxWindowsMediaPlayer MediaPlayer1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         internal System.Windows.Forms.RichTextBox richTextBox1;
@@ -717,9 +705,7 @@
         internal System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.ColumnHeader colDateMod;
-        private AxWMPLib.AxWindowsMediaPlayer MediaPlayer2;
         private System.Windows.Forms.Timer timer3;
-        private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Label lblVol;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.TrackBar trackBar2;

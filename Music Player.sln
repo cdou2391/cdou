@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music Player", "Music Player\Music Player.csproj", "{3336D5D9-669C-4E07-997F-14DAA008E155}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdouMusicPlayer", "Music Player\cdouMusicPlayer.csproj", "{3336D5D9-669C-4E07-997F-14DAA008E155}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "cdouMusic", "cdouMusic\cdouMusic.vdproj", "{3C8D697F-BAF3-4FCD-9E49-BE927109CAB3}"
 EndProject
