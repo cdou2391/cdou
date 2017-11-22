@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_558D122E5ED73C89F9235288E301CA87"
+        "OwnerKey" = "8:_6863D9B924534AB6AFDA64461755A1ED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5D052D3F8B816A2380BE79BB1334E381"
         "OwnerKey" = "8:_6FC1E7C88F3432EF317A66B4D57DE6E4"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7DD0989400C3FD76BF751BFEB9352BC5"
+        "OwnerKey" = "8:_6863D9B924534AB6AFDA64461755A1ED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
         "OwnerKey" = "8:_6863D9B924534AB6AFDA64461755A1ED"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,13 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6FC1E7C88F3432EF317A66B4D57DE6E4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1631BE216EAD7B6065B260DF1FEF57D4"
+        "OwnerKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,7 +100,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
+        "OwnerKey" = "8:_7DD0989400C3FD76BF751BFEB9352BC5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_558D122E5ED73C89F9235288E301CA87"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1631BE216EAD7B6065B260DF1FEF57D4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6FC1E7C88F3432EF317A66B4D57DE6E4"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -219,6 +243,11 @@
             "AssemblyAsmDisplayName" = "8:AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_1631BE216EAD7B6065B260DF1FEF57D4"
+                    {
+                    "Name" = "8:AxInterop.WMPLib.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:AxInterop.WMPLib.dll"
             "TargetName" = "8:"
@@ -245,8 +274,49 @@
             "AssemblyAsmDisplayName" = "8:policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_38B79187F682E4EA1872FD50879F0340"
+                    {
+                    "Name" = "8:policy.2.0.taglib-sharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                    "_9A3EB40EB3D40A3F2C3BCC1B52BF618B"
+                    {
+                    "Name" = "8:policy.2.0.taglib-sharp.config"
+                    "Attributes" = "3:1"
+                    }
                 }
             "SourcePath" = "8:policy.2.0.taglib-sharp.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_12C32454C1C44C3A99BB2E2572447A1B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_558D122E5ED73C89F9235288E301CA87"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_558D122E5ED73C89F9235288E301CA87"
+                    {
+                    "Name" = "8:NAudio.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:NAudio.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_12C32454C1C44C3A99BB2E2572447A1B"
@@ -291,8 +361,44 @@
             "AssemblyAsmDisplayName" = "8:Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_6FC1E7C88F3432EF317A66B4D57DE6E4"
+                    {
+                    "Name" = "8:Interop.WMPLib.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Interop.WMPLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_12C32454C1C44C3A99BB2E2572447A1B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7DD0989400C3FD76BF751BFEB9352BC5"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ParkSquare.Gracenote, Version=1.6.3.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7DD0989400C3FD76BF751BFEB9352BC5"
+                    {
+                    "Name" = "8:ParkSquare.Gracenote.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ParkSquare.Gracenote.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_12C32454C1C44C3A99BB2E2572447A1B"
@@ -317,6 +423,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_D033FC0027F189BEA135E98AF4C09B91"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -343,6 +454,11 @@
             "AssemblyAsmDisplayName" = "8:taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_FD7777115A0D86E845516BBD58D2F0C6"
+                    {
+                    "Name" = "8:taglib-sharp.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:taglib-sharp.dll"
             "TargetName" = "8:"
@@ -429,15 +545,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:cdouMusic"
-        "ProductCode" = "8:{2D436D85-A83B-4ECB-9E45-75A6F02B0861}"
-        "PackageCode" = "8:{7F5A1D97-904D-4D4D-AAE9-830288E19E30}"
+        "ProductCode" = "8:{01315130-87F7-4555-AF59-73E82666EC53}"
+        "PackageCode" = "8:{03E0ADF0-1C1D-46BA-9CBD-AB73AA2F2556}"
         "UpgradeCode" = "8:{27958B04-E3E5-448D-89CB-B5B2E24BD0C3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.21"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Rugamba.Inc"
         "ARPHELPTELEPHONE" = "8:+27630750694"
         "ARPHELPLINK" = "8:rugced@yahoo.fr"

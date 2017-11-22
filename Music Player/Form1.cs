@@ -27,7 +27,7 @@ namespace Music_Player
         internal static List<string> files;
         internal static string songSel;
         bool shuffleOn = false;
-        Mp3FileReader reader;
+        AudioFileReader reader;
         internal string songPath;
         
 
@@ -90,9 +90,10 @@ namespace Music_Player
             {
                 waveOutDevice.Dispose();
                 
-                reader = new Mp3FileReader(songPath1);
+                reader = new AudioFileReader(songPath1);
                 waveOutDevice.Init(reader);
                 waveOutDevice.Play();
+                timer3.Start();
                 string[] songMetaData = { dataS.songTitle(songPath1), dataS.songArtist(songPath1), dataS.songLength(songPath1).ToString(@"mm\:ss") };
                 FileInfo fileInfo = new FileInfo(songPath1);
                 label1.Text = dataS.songTitle(songPath1) + " - " + dataS.songArtist(songPath1);
@@ -102,7 +103,7 @@ namespace Music_Player
 
                 pictureBox1.Visible = true;
                 pictureBox1.Image = dataS.songAlbumArt(songPath1);
-                label3.Text = dataS.songLength(songPath1).ToString(@"mm\:ss");
+                //label3.Text = dataS.songLength(songPath1).ToString(@"mm\:ss");
 
                 waveOutDevice.Volume = (float)0.4;
                 int vol = (int)(waveOutDevice.Volume * 100);
@@ -441,7 +442,10 @@ namespace Music_Player
             btnPlay.Visible = true;
             btnPause.Visible = false;
             waveOutDevice.Dispose();
+            timer3.Stop();
 
+            //double songLengthInSeconds = reader.TotalTime.TotalSeconds;
+            //MessageBox.Show(songLengthInSeconds.ToString());
         }
         Random rnd = new Random();
        
@@ -686,36 +690,7 @@ namespace Music_Player
 
         private void txtSearch_Click(object sender, EventArgs e)
         {
-
         }
-        //public void timeConverter()
-        //{
-        //    int convertedTime = (int)waveOutDevice.GetPosition() / 1000;
-        //    TimeSpan soundTime = TimeSpan.FromSeconds(convertedTime);
-        //    label2.Text = soundTime.ToString();
-
-        //}
-        //void trackBarControl()
-        //{
-        //    trackBar1.Maximum = (int)reader.TotalTime.TotalSeconds;
-        //    trackBar1.Minimum = 0;
-        //    timer3.Start();
-        //}
-
-        //private void trackBar1_Scroll(object sender, EventArgs e)
-        //{
-        //    trackBar1.Maximum = (int)reader.TotalTime.TotalMilliseconds;
-        //    trackBar1.Minimum = 0;
-        //    double songProgress = waveOutDevice.GetPosition();
-        //    trackBar1.Value = (int)songProgress;
-        //}
-
-        //private void timer3_Tick(object sender, EventArgs e)
-        //{
-        //    trackBar1.Value = (int)waveOutDevice.GetPosition();
-        //}
-
-
         // Manage the volume
         public static class NativeMethods
         {
@@ -737,5 +712,35 @@ namespace Music_Player
             lblVol.Text = Convert.ToString("Vol: " + trackBar1.Value + "%");
         }
 
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            if (waveOutDevice != null)
+            {
+                try
+                {
+                    reader.CurrentTime = TimeSpan.FromSeconds(reader.TotalTime.TotalSeconds * trackBar2.Value / 100.0);
+                }
+                catch { }
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            try
+            { label3.Text = ((int)reader.CurrentTime.Minutes).ToString("D02") + ":"
+                        + ((int)reader.CurrentTime.Seconds).ToString("D02") + "/"
+                        + reader.TotalTime.ToString(@"mm\:ss");
+
+                int songLengthInSeconds = (int)reader.TotalTime.TotalSeconds;
+                int songCurrentInSeconds = ((int)reader.CurrentTime.Minutes * 60) + (int)reader.CurrentTime.Seconds;
+                trackBar2.Minimum = 0;
+                trackBar2.Maximum = songLengthInSeconds;
+                trackBar2.Value = songCurrentInSeconds;
+            }
+            catch(Exception)
+            {
+                btnNext.PerformClick();
+            }
+        }
     }
 }

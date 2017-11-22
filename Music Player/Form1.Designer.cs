@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -85,6 +85,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -97,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -275,10 +277,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "Folders";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode1});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 600);
             this.treeView1.TabIndex = 0;
@@ -471,7 +473,7 @@
             this.btnPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause.ForeColor = System.Drawing.Color.White;
-            this.btnPause.Location = new System.Drawing.Point(196, 76);
+            this.btnPause.Location = new System.Drawing.Point(197, 76);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(75, 23);
             this.btnPause.TabIndex = 15;
@@ -506,28 +508,29 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label3.Location = new System.Drawing.Point(810, 9);
+            this.label3.ForeColor = System.Drawing.Color.Indigo;
+            this.label3.Location = new System.Drawing.Point(759, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 24);
             this.label3.TabIndex = 15;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.trackBar1);
-            this.panel3.Controls.Add(this.lblVol);
-            this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.txtSearch);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.btnPlay);
+            this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.btnPause);
             this.panel3.Controls.Add(this.bntStop);
             this.panel3.Controls.Add(this.btnPrev);
             this.panel3.Controls.Add(this.btnNext);
-            this.panel3.Controls.Add(this.btnPlay);
+            this.panel3.Controls.Add(this.trackBar2);
+            this.panel3.Controls.Add(this.trackBar1);
+            this.panel3.Controls.Add(this.lblVol);
+            this.panel3.Controls.Add(this.btnSearch);
+            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.MediaPlayer2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 24);
@@ -605,6 +608,19 @@
             // 
             this.folderBrowserDialog1.SelectedPath = "A:\\Music";
             // 
+            // timer3
+            // 
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(-8, 101);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(943, 45);
+            this.trackBar2.TabIndex = 27;
+            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -643,6 +659,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -705,6 +722,7 @@
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Label lblVol;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar2;
     }
 }
 
