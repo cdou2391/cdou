@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -77,8 +77,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.tBSongProgress = new System.Windows.Forms.TrackBar();
+            this.tBVolume = new System.Windows.Forms.TrackBar();
             this.lblVol = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -93,8 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBSongProgress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -275,10 +275,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode6.Name = "Node0";
-            treeNode6.Text = "Folders";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
+            treeNode1});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 600);
             this.treeView1.TabIndex = 0;
@@ -513,8 +513,8 @@
             this.panel3.Controls.Add(this.bntStop);
             this.panel3.Controls.Add(this.btnPrev);
             this.panel3.Controls.Add(this.btnNext);
-            this.panel3.Controls.Add(this.trackBar2);
-            this.panel3.Controls.Add(this.trackBar1);
+            this.panel3.Controls.Add(this.tBSongProgress);
+            this.panel3.Controls.Add(this.tBVolume);
             this.panel3.Controls.Add(this.lblVol);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.pictureBox2);
@@ -548,27 +548,27 @@
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             this.pictureBox3.MouseHover += new System.EventHandler(this.pictureBox3_MouseHover);
             // 
-            // trackBar2
+            // tBSongProgress
             // 
-            this.trackBar2.BackColor = System.Drawing.Color.Black;
-            this.trackBar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trackBar2.Location = new System.Drawing.Point(113, 94);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(839, 45);
-            this.trackBar2.TabIndex = 27;
-            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.tBSongProgress.BackColor = System.Drawing.Color.Black;
+            this.tBSongProgress.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tBSongProgress.Location = new System.Drawing.Point(113, 94);
+            this.tBSongProgress.Name = "tBSongProgress";
+            this.tBSongProgress.Size = new System.Drawing.Size(839, 45);
+            this.tBSongProgress.TabIndex = 27;
+            this.tBSongProgress.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tBSongProgress.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
-            // trackBar1
+            // tBVolume
             // 
-            this.trackBar1.Location = new System.Drawing.Point(897, 0);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 76);
-            this.trackBar1.TabIndex = 26;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.tBVolume.Location = new System.Drawing.Point(897, 0);
+            this.tBVolume.Maximum = 100;
+            this.tBVolume.Name = "tBVolume";
+            this.tBVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tBVolume.Size = new System.Drawing.Size(45, 76);
+            this.tBVolume.TabIndex = 26;
+            this.tBVolume.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tBVolume.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // lblVol
             // 
@@ -646,8 +646,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBSongProgress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -707,8 +707,8 @@
         private System.Windows.Forms.ColumnHeader colDateMod;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Label lblVol;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar tBVolume;
+        private System.Windows.Forms.TrackBar tBSongProgress;
     }
 }
 

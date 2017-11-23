@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
-using WMPLib;
 using System.Linq;
 using System.Collections;
 using System.Diagnostics;
@@ -20,8 +19,7 @@ namespace Music_Player
             InitializeComponent();
             this.Text = Application.ProductName + " " + Application.ProductVersion;
         }
-        
-        
+        #region Different classes needed
         //Getting the classes needed
         AudioData dataS = new AudioData();
         GetFiless getFiles = new GetFiless();
@@ -30,12 +28,9 @@ namespace Music_Player
         bool shuffleOn = false;
         AudioFileReader reader;
         internal string songPath;
-
-       
-       
         WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
-
+        #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
             richTextBox1.Enabled=true;
@@ -43,12 +38,9 @@ namespace Music_Player
 
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;
-            //timer.Start();
             timer3.Interval = 1000;
             this.treeView1.Nodes.Add(TraverseDirectory(@"A:\Music\"));
-            //timer.Stop()
-
-            
+            tBVolume.Value = 25;
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -109,10 +101,10 @@ namespace Music_Player
                 pictureBox1.Image = dataS.songAlbumArt(songPath1);
                 //label3.Text = dataS.songLength(songPath1).ToString(@"mm\:ss");
 
-                waveOutDevice.Volume = (float)0.4;
-                int vol = (int)(waveOutDevice.Volume * 100);
-                trackBar1.Value = vol;
-                lblVol.Text = Convert.ToString("Vol: " + trackBar1.Value + "%");
+                //waveOutDevice.Volume = (float)0.4;
+                //int vol = (int)(waveOutDevice.Volume * 100);
+                tBVolume.Value = tBVolume.Value;
+                lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
 
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
@@ -621,10 +613,10 @@ namespace Music_Player
             uint CurrVol;
             NativeMethods.waveOutGetVolume(IntPtr.Zero, out CurrVol);
             ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
-            int NewVolume = ((ushort.MaxValue / 100) * trackBar1.Value);
+            int NewVolume = ((ushort.MaxValue / 100) * tBVolume.Value);
             uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
             NativeMethods.waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
-            lblVol.Text = Convert.ToString("Vol: " + trackBar1.Value + "%");
+            lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
         }
 
         private void trackBar2_Scroll(object sender, EventArgs e)
@@ -633,7 +625,7 @@ namespace Music_Player
             {
                 try
                 {
-                    reader.CurrentTime = TimeSpan.FromSeconds(reader.TotalTime.TotalSeconds * trackBar2.Value / 100.0);
+                    reader.CurrentTime = TimeSpan.FromSeconds(tBSongProgress.Value);
                 }
                 catch { }
             }
@@ -648,9 +640,14 @@ namespace Music_Player
 
                 int songLengthInSeconds = (int)reader.TotalTime.TotalSeconds;
                 int songCurrentInSeconds = ((int)reader.CurrentTime.Minutes * 60) + (int)reader.CurrentTime.Seconds;
-                trackBar2.Minimum = 0;
-                trackBar2.Maximum = songLengthInSeconds;
-                trackBar2.Value = songCurrentInSeconds;
+                tBSongProgress.Minimum = 0;
+                tBSongProgress.Maximum = songLengthInSeconds;
+                tBSongProgress.Value = songCurrentInSeconds;
+
+                if (tBSongProgress.Value==tBSongProgress.Maximum)
+                {
+                    btnNext.PerformClick();
+                }
             }
             catch(Exception)
             {
