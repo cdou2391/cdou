@@ -155,6 +155,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icons\cdou.png" />
+    <Content Include="icons\cdou_sAr_icon.ico" />
+    <Content Include="icons\shuffleBtn.png" />
+    <Content Include="icons\shuffleBtnOn1.png" />
     <Content Include="License.txt" />
     <Content Include="Readme.txt" />
     <None Include="Service References\ChatLyrics\Music_Player.ChatLyrics.GetLyricResult.datasource">

@@ -13,7 +13,6 @@ namespace Music_Player
 {
     public partial class Form1 : Form
     {
-   
         public Form1()
         {
             InitializeComponent();
@@ -39,18 +38,17 @@ namespace Music_Player
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;
             timer3.Interval = 1;
-            this.treeView1.Nodes.Add(TraverseDirectory(@"A:\Music\"));
             tBVolume.Value = 25;
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            
             //loading the music files and displaying them in the listview
             if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                
                 listView1.Items.Clear();
                 files = getFiles.GetFiles(folderBrowserDialog1.SelectedPath);
+                treeView1.Nodes.Clear();
+                treeView1.Nodes.Add(TraverseDirectory(folderBrowserDialog1.SelectedPath));
                 int x = 0;
                 foreach (var fil in files)
                 {
@@ -99,10 +97,7 @@ namespace Music_Player
 
                 pictureBox1.Visible = true;
                 pictureBox1.Image = dataS.songAlbumArt(songPath1);
-                //label3.Text = dataS.songLength(songPath1).ToString(@"mm\:ss");
 
-                //waveOutDevice.Volume = (float)0.4;
-                //int vol = (int)(waveOutDevice.Volume * 100);
                 tBVolume.Value = tBVolume.Value;
                 lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
 
@@ -126,8 +121,6 @@ namespace Music_Player
             {
                 MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            
         }
 
         private void toolStripPlay_Click(object sender, EventArgs e)
@@ -142,8 +135,6 @@ namespace Music_Player
                 MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-
         private void deleteFromFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Permanently delete the files selected
@@ -180,7 +171,6 @@ namespace Music_Player
         {
             // Get the new sorting column.
             ColumnHeader new_sorting_column = listView1.Columns[e.Column];
-
             // Figure out the new sorting order.
             System.Windows.Forms.SortOrder sort_order;
             if (SortingColumn == null)
@@ -212,7 +202,6 @@ namespace Music_Player
                 // Remove the old sort indicator.
                 SortingColumn.Text = SortingColumn.Text.Substring(2);
             }
-
             // Display the new sort order.
             SortingColumn = new_sorting_column;
             if (sort_order == SortOrder.Ascending)
@@ -236,13 +225,11 @@ namespace Music_Player
         {
             private int ColumnNumber;
             private SortOrder SortOrder;
-
             public ListViewItemComparer(int column_number,SortOrder sort_order)
             {
                 ColumnNumber = column_number;
                 SortOrder = sort_order;
             }
-
             // Compare two ListViewItems.
             public int Compare(object object_x, object object_y)
             {
@@ -340,10 +327,7 @@ namespace Music_Player
             {
                 MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            
         }
-        
-
         private void bntStop_Click(object sender, EventArgs e)
         {
             btnPlay.Visible = true;
@@ -359,7 +343,6 @@ namespace Music_Player
         private void btnNext_Click(object sender, EventArgs e)
         {
             //play the next song on the list
-            
             try
             {
                 int rndIndex = rnd.Next(0, listView1.Items.Count - 1);
@@ -370,7 +353,6 @@ namespace Music_Player
                 listView1.Items[songIndex].Selected = false;
 
                 if (songIndex == listView1.Items.Count-1)
-
                 {
                     songIndex = 0;
                 }
@@ -395,9 +377,7 @@ namespace Music_Player
                 btnPlay.Visible = true;
                 btnPause.Visible = false;
             }
-
         }
-
         private void btnPrev_Click(object sender, EventArgs e)
         {
             //play the previuos song on the list
@@ -430,13 +410,11 @@ namespace Music_Player
             {
                 btnPlay.Visible =true;
                 btnPause.Visible = false;
-
             }
         }
         private bool spacePressed = false;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
             //KeyEventArgs ke = e;
             if (e != null && e.KeyCode != Keys.Space)
             {
@@ -448,7 +426,6 @@ namespace Music_Player
                 spacePressed = true;
             }
         }
-
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (spacePressed == true)
@@ -490,7 +467,6 @@ namespace Music_Player
             ttp1.Show("Turn shuffle on", pictureBox2);
         }
 
-
         private TreeNode TraverseDirectory(string path)
         {
             TreeNode result = new TreeNode(path);
@@ -505,7 +481,6 @@ namespace Music_Player
                 MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Application.Exit();
             }
-
             return result;
         }
         
@@ -549,12 +524,10 @@ namespace Music_Player
                 MessageBox.Show(ex.Message + "\r\nPlease select a valid folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
         }
-
         private void editPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             edit editFrm = new edit();
@@ -562,7 +535,6 @@ namespace Music_Player
             songSel = listView1.SelectedItems[0].Text;
             editFrm.Show();
         }
-
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -580,13 +552,6 @@ namespace Music_Player
                 if(txtSearch.Text.Length>0 && item.SubItems[1].Text.ToLower().StartsWith(txtSearch.Text.ToLower()))
                 {
                     item.Selected = true;
-
-                }
-                else
-                {
-                    //item.Selected = false;
-                    //item.BackColor = Color.Red;
-                    //item.ForeColor = Color.Black;
                 }
                 if (listView1.SelectedItems.Count == 1)
                 {
@@ -594,10 +559,7 @@ namespace Music_Player
                 }
             }
         }
-
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-        }
+        
         // Manage the volume
         public static class NativeMethods
         {
@@ -607,7 +569,6 @@ namespace Music_Player
             [DllImport("winmm.dll")]
             internal static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
         }
-
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             uint CurrVol;
@@ -654,6 +615,5 @@ namespace Music_Player
                 btnNext.PerformClick();
             }
         }
-        
     }
 }

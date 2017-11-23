@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.colPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,6 +54,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,31 +73,29 @@
             this.btnPrev = new System.Windows.Forms.Button();
             this.bntStop = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tBSongProgress = new System.Windows.Forms.TrackBar();
-            this.tBVolume = new System.Windows.Forms.TrackBar();
             this.lblVol = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tBVolume = new System.Windows.Forms.TrackBar();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBSongProgress)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tBVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -107,6 +107,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(745, 630);
             this.panel1.TabIndex = 0;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(626, 3);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(102, 16);
+            this.txtSearch.TabIndex = 22;
+            this.txtSearch.Text = "Search by Title";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // listView1
             // 
@@ -277,15 +288,27 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode5.Name = "Node0";
-            treeNode5.Text = "Folders";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode2});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 433);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 433);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(197, 197);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // panel2
             // 
@@ -473,18 +496,6 @@
             this.btnPause.Visible = false;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 433);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(197, 197);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -527,22 +538,12 @@
             this.panel3.Size = new System.Drawing.Size(942, 87);
             this.panel3.TabIndex = 19;
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(626, 0);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(119, 23);
-            this.txtSearch.TabIndex = 22;
-            this.txtSearch.Text = "Search by Title";
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(280, 9);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 20;
             this.pictureBox3.TabStop = false;
@@ -559,16 +560,6 @@
             this.tBSongProgress.TabIndex = 27;
             this.tBSongProgress.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tBSongProgress.Scroll += new System.EventHandler(this.trackBar2_Scroll);
-            // 
-            // tBVolume
-            // 
-            this.tBVolume.Location = new System.Drawing.Point(842, 49);
-            this.tBVolume.Maximum = 100;
-            this.tBVolume.Name = "tBVolume";
-            this.tBVolume.Size = new System.Drawing.Size(94, 45);
-            this.tBVolume.TabIndex = 26;
-            this.tBVolume.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tBVolume.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // lblVol
             // 
@@ -596,12 +587,22 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(280, 9);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
+            // 
+            // tBVolume
+            // 
+            this.tBVolume.Location = new System.Drawing.Point(842, 49);
+            this.tBVolume.Maximum = 100;
+            this.tBVolume.Name = "tBVolume";
+            this.tBVolume.Size = new System.Drawing.Size(94, 45);
+            this.tBVolume.TabIndex = 26;
+            this.tBVolume.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tBVolume.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // folderBrowserDialog1
             // 
@@ -639,17 +640,17 @@
             this.panel1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBSongProgress)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tBVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBVolume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
