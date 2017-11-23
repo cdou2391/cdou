@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -100,11 +100,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.listView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(197, 141);
+            this.panel1.Location = new System.Drawing.Point(197, 111);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(745, 600);
+            this.panel1.Size = new System.Drawing.Size(745, 630);
             this.panel1.TabIndex = 0;
             // 
             // listView1
@@ -130,7 +131,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(745, 600);
+            this.listView1.Size = new System.Drawing.Size(745, 630);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 21;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -257,11 +258,12 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel4.Controls.Add(this.treeView1);
+            this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel4.Location = new System.Drawing.Point(0, 141);
+            this.panel4.Location = new System.Drawing.Point(0, 111);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(197, 600);
+            this.panel4.Size = new System.Drawing.Size(197, 630);
             this.panel4.TabIndex = 0;
             // 
             // treeView1
@@ -275,12 +277,12 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Folders";
+            treeNode5.Name = "Node0";
+            treeNode5.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode5});
             this.treeView1.ShowLines = false;
-            this.treeView1.Size = new System.Drawing.Size(197, 600);
+            this.treeView1.Size = new System.Drawing.Size(197, 433);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
@@ -289,9 +291,9 @@
             // 
             this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(942, 0);
+            this.panel2.Location = new System.Drawing.Point(942, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(420, 741);
+            this.panel2.Size = new System.Drawing.Size(420, 717);
             this.panel2.TabIndex = 1;
             // 
             // richTextBox1
@@ -305,7 +307,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.richTextBox1.Size = new System.Drawing.Size(420, 741);
+            this.richTextBox1.Size = new System.Drawing.Size(420, 717);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "Lyrics";
             // 
@@ -386,7 +388,7 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(942, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1362, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -398,9 +400,9 @@
             this.btnPlay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlay.ForeColor = System.Drawing.Color.White;
-            this.btnPlay.Location = new System.Drawing.Point(203, 69);
+            this.btnPlay.Location = new System.Drawing.Point(79, 12);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(75, 23);
+            this.btnPlay.Size = new System.Drawing.Size(61, 23);
             this.btnPlay.TabIndex = 14;
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = false;
@@ -414,9 +416,9 @@
             this.btnNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(284, 69);
+            this.btnNext.Location = new System.Drawing.Point(146, 12);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.Size = new System.Drawing.Size(61, 23);
             this.btnNext.TabIndex = 16;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -430,9 +432,9 @@
             this.btnPrev.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrev.ForeColor = System.Drawing.Color.White;
-            this.btnPrev.Location = new System.Drawing.Point(122, 69);
+            this.btnPrev.Location = new System.Drawing.Point(12, 12);
             this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(75, 23);
+            this.btnPrev.Size = new System.Drawing.Size(61, 23);
             this.btnPrev.TabIndex = 17;
             this.btnPrev.Text = "Previous";
             this.btnPrev.UseVisualStyleBackColor = false;
@@ -446,9 +448,9 @@
             this.bntStop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.bntStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntStop.ForeColor = System.Drawing.Color.White;
-            this.bntStop.Location = new System.Drawing.Point(365, 69);
+            this.bntStop.Location = new System.Drawing.Point(213, 12);
             this.bntStop.Name = "bntStop";
-            this.bntStop.Size = new System.Drawing.Size(75, 23);
+            this.bntStop.Size = new System.Drawing.Size(61, 23);
             this.bntStop.TabIndex = 18;
             this.bntStop.Text = "Stop";
             this.bntStop.UseVisualStyleBackColor = false;
@@ -462,9 +464,9 @@
             this.btnPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(2)))), ((int)(((byte)(36)))));
             this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause.ForeColor = System.Drawing.Color.White;
-            this.btnPause.Location = new System.Drawing.Point(203, 69);
+            this.btnPause.Location = new System.Drawing.Point(79, 12);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
+            this.btnPause.Size = new System.Drawing.Size(61, 23);
             this.btnPause.TabIndex = 15;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = false;
@@ -474,9 +476,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 433);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 117);
+            this.pictureBox1.Size = new System.Drawing.Size(197, 197);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -487,7 +490,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label1.Location = new System.Drawing.Point(115, 9);
+            this.label1.Location = new System.Drawing.Point(330, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 24);
             this.label1.TabIndex = 14;
@@ -497,16 +500,14 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Indigo;
-            this.label3.Location = new System.Drawing.Point(759, 9);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(741, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 24);
             this.label3.TabIndex = 15;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtSearch);
-            this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.btnPlay);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.btnPause);
@@ -514,24 +515,24 @@
             this.panel3.Controls.Add(this.btnPrev);
             this.panel3.Controls.Add(this.btnNext);
             this.panel3.Controls.Add(this.tBSongProgress);
-            this.panel3.Controls.Add(this.tBVolume);
             this.panel3.Controls.Add(this.lblVol);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.tBVolume);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(942, 117);
+            this.panel3.Size = new System.Drawing.Size(942, 87);
             this.panel3.TabIndex = 19;
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(719, 69);
+            this.txtSearch.Location = new System.Drawing.Point(626, 0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(127, 23);
+            this.txtSearch.Size = new System.Drawing.Size(119, 23);
             this.txtSearch.TabIndex = 22;
             this.txtSearch.Text = "Search by Title";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -539,7 +540,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(446, 62);
+            this.pictureBox3.Location = new System.Drawing.Point(280, 9);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(30, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -552,20 +553,19 @@
             // 
             this.tBSongProgress.BackColor = System.Drawing.Color.Black;
             this.tBSongProgress.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tBSongProgress.Location = new System.Drawing.Point(113, 94);
+            this.tBSongProgress.Location = new System.Drawing.Point(3, 49);
             this.tBSongProgress.Name = "tBSongProgress";
-            this.tBSongProgress.Size = new System.Drawing.Size(839, 45);
+            this.tBSongProgress.Size = new System.Drawing.Size(740, 45);
             this.tBSongProgress.TabIndex = 27;
             this.tBSongProgress.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tBSongProgress.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // tBVolume
             // 
-            this.tBVolume.Location = new System.Drawing.Point(897, 0);
+            this.tBVolume.Location = new System.Drawing.Point(842, 49);
             this.tBVolume.Maximum = 100;
             this.tBVolume.Name = "tBVolume";
-            this.tBVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tBVolume.Size = new System.Drawing.Size(45, 76);
+            this.tBVolume.Size = new System.Drawing.Size(94, 45);
             this.tBVolume.TabIndex = 26;
             this.tBVolume.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tBVolume.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -575,7 +575,7 @@
             this.lblVol.AutoSize = true;
             this.lblVol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVol.ForeColor = System.Drawing.Color.White;
-            this.lblVol.Location = new System.Drawing.Point(863, 75);
+            this.lblVol.Location = new System.Drawing.Point(854, 66);
             this.lblVol.Name = "lblVol";
             this.lblVol.Size = new System.Drawing.Size(55, 17);
             this.lblVol.TabIndex = 25;
@@ -583,7 +583,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(611, 69);
+            this.btnSearch.Location = new System.Drawing.Point(255, 71);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 23;
@@ -594,7 +594,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(446, 62);
+            this.pictureBox2.Location = new System.Drawing.Point(280, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -622,8 +622,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(777, 439);
@@ -636,6 +636,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

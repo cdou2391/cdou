@@ -38,7 +38,7 @@ namespace Music_Player
 
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;
-            timer3.Interval = 1000;
+            timer3.Interval = 1;
             this.treeView1.Nodes.Add(TraverseDirectory(@"A:\Music\"));
             tBVolume.Value = 25;
         }
