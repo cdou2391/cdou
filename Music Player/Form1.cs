@@ -46,36 +46,9 @@ namespace Music_Player
             if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 listView1.Items.Clear();
-                files = getFiles.GetFiles(folderBrowserDialog1.SelectedPath);
                 treeView1.Nodes.Clear();
                 treeView1.Nodes.Add(TraverseDirectory(folderBrowserDialog1.SelectedPath));
-                int x = 0;
-                foreach (var fil in files)
-                {
-                    FileInfo fileInfo = new FileInfo(fil);
-                    try
-                    {
-                        string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
-                            dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
-                            dataS.dateModified(fil)};
-
-                        listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                        x++;
-                    }
-                    catch (Exception)
-                    {
-                        listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                        x++;
-                    }
-                    if (x % 1500 == 0)
-                    {
-                        MessageBox.Show(x + " songs have loaded so far!");
-                    }
-                    else if (x== files.Count())
-                    {
-                        MessageBox.Show("Done! All " + x + " songs have been loaded");
-                    }
-                }
+                
             }
         }
         public void songPlay(string songPath1)
@@ -97,8 +70,8 @@ namespace Music_Player
 
                 pictureBox1.Visible = true;
                 pictureBox1.Image = dataS.songAlbumArt(songPath1);
-
                 tBVolume.Value = tBVolume.Value;
+                waveOutDevice.Volume = ((float)tBVolume.Value) / 100;
                 lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
 
                 btnPlay.Visible = false;
@@ -494,28 +467,35 @@ namespace Music_Player
                 int x = 0;
                 foreach (var fil in files)
                 {
-                    FileInfo fileInfo = new FileInfo(fil);
-                    try
+                    if (files.Count != 0)
                     {
-                        string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                        FileInfo fileInfo = new FileInfo(fil);
+                        try
+                        {
+                            string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
                             dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
                             dataS.dateModified(fil)};
 
-                        listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                        x++;
+                            listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                            x++;
+                        }
+                        catch (Exception)
+                        {
+                            listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                            x++;
+                        }
+                        if (x % 1500 == 0)
+                        {
+                            MessageBox.Show(x + " songs have loaded so far!");
+                        }
+                        else if (x == files.Count())
+                        {
+                            MessageBox.Show("Done! All " + x + " songs have been loaded");
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                        x++;
-                    }
-                    if (x % 1500 == 0)
-                    {
-                        MessageBox.Show(x + " songs have loaded so far!");
-                    }
-                    else if (x == files.Count())
-                    {
-                        MessageBox.Show("Done! All " + x + " songs have been loaded");
+                        MessageBox.Show("No songs exist in the selected folder", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
