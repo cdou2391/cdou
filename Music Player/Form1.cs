@@ -615,5 +615,39 @@ namespace Music_Player
                 btnNext.PerformClick();
             }
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_MouseHover(object sender, EventArgs e)
+        {
+            ttp1.Show("Unmute", pictureBox4);
+        }
+
+        private void pictureBox5_MouseHover(object sender, EventArgs e)
+        {
+            ttp1.Show("Mute", pictureBox5);
+        }
+        internal int volBeforeMute;
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            volBeforeMute = tBVolume.Value;
+            waveOutDevice.Volume = 0;
+            tBVolume.Value = 0;
+            lblVol.Text= Convert.ToString("Vol: " + tBVolume.Value + "%");
+            pictureBox4.Show();
+            pictureBox5.Hide();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            waveOutDevice.Volume = (float)volBeforeMute /100;
+            tBVolume.Value = volBeforeMute;
+            lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
+            pictureBox4.Hide();
+            pictureBox5.Show();
+        }
     }
 }
