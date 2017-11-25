@@ -510,9 +510,8 @@ namespace Music_Player
         }
         private void editPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            edit editFrm = new edit();
-            
             songSel = listView1.SelectedItems[0].Text;
+            edit editFrm = new edit();
             editFrm.Show();
         }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

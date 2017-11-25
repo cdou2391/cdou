@@ -20,11 +20,11 @@ namespace Music_Player
         AudioData dataS = new AudioData();
         GetFiless getFiles = new GetFiless();
         string sel = Form1.songSel;
-       
+        Form1 frm1 = new Form1();
+        FileInfo fI = new FileInfo(Form1.songSel);
         
         public void loading_Load(object sender, EventArgs e)
         {
-            
             if (sel!=null)
             {
                 AudioData songTags = new AudioData();
@@ -35,7 +35,8 @@ namespace Music_Player
                 txtYear.Text = songTags.songYear(sel);
                 picAlbum.Visible = true;
                 picAlbum.Image = dataS.songAlbumArt(sel);
-                label1.Text = "File: " + sel;
+
+                label1.Text = "File: " + fI.Name ;
             }
 
 
