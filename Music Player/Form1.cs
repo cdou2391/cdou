@@ -452,7 +452,7 @@ namespace Music_Player
             catch(UnauthorizedAccessException ex)
             {
                 MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                Application.Exit();
+                //Application.Exit();
             }
             return result;
         }
@@ -510,9 +510,16 @@ namespace Music_Player
         }
         private void editPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            songSel = listView1.SelectedItems[0].Text;
-            edit editFrm = new edit();
-            editFrm.Show();
+            try
+            {
+                songSel = listView1.SelectedItems[0].Text;
+                edit editFrm = new edit();
+                editFrm.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please select a song!!\r\n" + ex.Message ,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -627,6 +634,137 @@ namespace Music_Player
             lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
             pictureBox4.Hide();
             pictureBox5.Show();
+        }
+
+        private void listView1_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string[] dropedFiles = (string[])e.Data.GetData(DataFormats.FileDrop, true);
+                bool isFolder = Directory.Exists(dropedFiles[0]);
+                if (isFolder == true)
+                {
+                    for (int y = 0; y < dropedFiles.Length; y++)
+                    {
+                        files = getFiles.GetFiles(dropedFiles[y]);
+                    }
+                    int x = 0;
+                    foreach (var fil in files)
+                    {
+                        if (files.Count != 0)
+                        {
+                            FileInfo fileInfo = new FileInfo(fil);
+                            
+                                try
+                                {
+                                    string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                                                              dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
+                                                              dataS.dateModified(fil)};
+
+                                    listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                                    x++;
+                                }
+                                catch (Exception)
+                                {
+                                    listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                                    x++;
+                                }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No songs exist in the selected folder", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                else
+                {
+                    int x = 0;
+                    foreach (var fil in dropedFiles)
+                    {
+                        if (dropedFiles.Length != 0)
+                        {
+                            FileInfo fileInfo = new FileInfo(fil);
+                            if (fileInfo.Extension == ".mp3" || fileInfo.Extension == ".m4a" || fileInfo.Extension == ".wma")
+                            {
+                                try
+                                {
+                                    string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                                                              dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
+                                                              dataS.dateModified(fil)};
+
+                                    listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                                    x++;
+                                }
+                                catch (Exception)
+                                {
+                                    listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                                    x++;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Not a music file");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No songs exist in the selected folder", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\r\nPlease select a valid folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void listView1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void treeView1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void treeView1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] dropedFolders = (string[])e.Data.GetData(DataFormats.FileDrop, true);
+            bool isFolder = Directory.Exists(dropedFolders[0]);
+            if (isFolder == true)
+            {
+
+                for (int x = 0; x < dropedFolders.Length; x++)
+                {
+                    treeView1.Nodes.Add(TraverseDirectory(dropedFolders[x]));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please only drop a folder here!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void panel3_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+
+        }
+
+        private void panel3_DragDrop(object sender, DragEventArgs e)
+        {
+            string dropedsong = ((string[])e.Data.GetData(DataFormats.FileDrop, true))[0];
+            bool isFolder = Directory.Exists(dropedsong);
+            if (isFolder == false)
+            {
+                songPlay(dropedsong);
+            }
+            else
+            {
+                MessageBox.Show("The file you are trying to play is not a song\r\nPlease only drop a song here!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
