@@ -29,9 +29,17 @@ namespace Music_Player
         internal string songPath;
         WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
+        string filePath = "playing.txt";
+        
+        
+
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
+            if(File.Exists(filePath)==true)
+            {
+                File.Delete(filePath);
+            }
             richTextBox1.Enabled=true;
             richTextBox1.Text = "Lyrics";
 
@@ -53,14 +61,24 @@ namespace Music_Player
         }
         public void songPlay(string songPath1)
         {
+            //FileStream fStream = null;
+            //fStream = new FileStream("playing.txt", FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+            using (TextWriter sWriter = new StreamWriter(filePath,append: true))
+            {
+                sWriter.WriteLine(songPath1);
+                sWriter.Dispose();
+            }
             try
             {
                 waveOutDevice.Dispose();
+
                 
                 reader = new AudioFileReader(songPath1);
                 waveOutDevice.Init(reader);
                 waveOutDevice.Play();
                 timer3.Start();
+
                 string[] songMetaData = { dataS.songTitle(songPath1), dataS.songArtist(songPath1), dataS.songLength(songPath1).ToString(@"mm\:ss") };
                 FileInfo fileInfo = new FileInfo(songPath1);
                 label1.Text = dataS.songTitle(songPath1) + " - " + dataS.songArtist(songPath1);
@@ -306,10 +324,8 @@ namespace Music_Player
             btnPlay.Visible = true;
             btnPause.Visible = false;
             waveOutDevice.Dispose();
+            tBSongProgress.Value = 0;
             timer3.Stop();
-
-            //double songLengthInSeconds = reader.TotalTime.TotalSeconds;
-            //MessageBox.Show(songLengthInSeconds.ToString());
         }
         Random rnd = new Random();
        
@@ -351,39 +367,22 @@ namespace Music_Player
                 btnPause.Visible = false;
             }
         }
+        internal int numPrev = 2;
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            //play the previuos song on the list
             try
             {
-                btnPlay.Visible = false;
-                btnPause.Visible = true;
-                var nowSong = listView1.FindItemWithText(dataS.songTitle(songPath));
-                int songIndex = listView1.Items.IndexOf(nowSong);
-                listView1.Items[songIndex].Selected = false;
-
-                if (songIndex == 0)
-                {
-                    songIndex = listView1.Items.Count - 1;
-                }
-                else
-                {
-                    songIndex = songIndex - 1;
-                }
-
-                listView1.Items[songIndex].Selected = true;
-
-                listView1.Select();
+                string[] allPlayed = File.ReadAllLines(filePath);
+                int count = allPlayed.Length;
+                string previousSong = allPlayed[count - numPrev];
+                listView1.FindItemWithText(listView1.SelectedItems[0].Text).Selected = false;
+                listView1.FindItemWithText(previousSong).Selected=true;
+                songPlay(previousSong);
+                numPrev=numPrev+2;
+            }
+            catch { }
+           
             
-                string songPath1 = listView1.Items[songIndex].Text;
-                songPlay(songPath1);
-                songPath = songPath1;
-            }
-            catch (Exception)
-            {
-                btnPlay.Visible =true;
-                btnPause.Visible = false;
-            }
         }
         private bool spacePressed = false;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
