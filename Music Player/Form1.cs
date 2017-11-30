@@ -29,18 +29,16 @@ namespace Music_Player
         internal string songPath;
         WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
-        string filePath = "playing.txt";
-        
-        
+        string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Cdou Music Player\playing.txt";
+
+
 
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(File.Exists(filePath)==true)
-            {
-                File.Delete(filePath);
-            }
-            richTextBox1.Enabled=true;
+            Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Cdou Music Player"));
+
+            File.Create(filePath);
             richTextBox1.Text = "Lyrics";
 
             pictureBox2.Visible = true;
@@ -61,10 +59,9 @@ namespace Music_Player
         }
         public void songPlay(string songPath1)
         {
-            //FileStream fStream = null;
-            //fStream = new FileStream("playing.txt", FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
 
-            using (TextWriter sWriter = new StreamWriter(filePath,append: true))
+            
+            using (TextWriter sWriter = new StreamWriter(filePath, append: true))
             {
                 sWriter.WriteLine(songPath1);
                 sWriter.Dispose();
@@ -95,7 +92,7 @@ namespace Music_Player
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
             }
-            catch(Exception ex)
+            catch(ArgumentNullException ex)
             {
                 MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -110,7 +107,7 @@ namespace Music_Player
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -123,7 +120,7 @@ namespace Music_Player
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void deleteFromFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -316,7 +313,7 @@ namespace Music_Player
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+               // MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         private void bntStop_Click(object sender, EventArgs e)

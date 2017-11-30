@@ -64,13 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FD7777115A0D86E845516BBD58D2F0C6"
+        "OwnerKey" = "8:_558D122E5ED73C89F9235288E301CA87"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,7 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_558D122E5ED73C89F9235288E301CA87"
+        "OwnerKey" = "8:_FD7777115A0D86E845516BBD58D2F0C6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -207,16 +207,6 @@
             "AssemblyAsmDisplayName" = "8:policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_38B79187F682E4EA1872FD50879F0340"
-                    {
-                    "Name" = "8:policy.2.0.taglib-sharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                    "_9A3EB40EB3D40A3F2C3BCC1B52BF618B"
-                    {
-                    "Name" = "8:policy.2.0.taglib-sharp.config"
-                    "Attributes" = "3:1"
-                    }
                 }
             "SourcePath" = "8:policy.2.0.taglib-sharp.dll"
             "TargetName" = "8:"
@@ -243,11 +233,6 @@
             "AssemblyAsmDisplayName" = "8:NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_558D122E5ED73C89F9235288E301CA87"
-                    {
-                    "Name" = "8:NAudio.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:NAudio.dll"
             "TargetName" = "8:"
@@ -274,11 +259,6 @@
             "AssemblyAsmDisplayName" = "8:ParkSquare.Gracenote, Version=1.6.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_7DD0989400C3FD76BF751BFEB9352BC5"
-                    {
-                    "Name" = "8:ParkSquare.Gracenote.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:ParkSquare.Gracenote.dll"
             "TargetName" = "8:"
@@ -305,11 +285,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_D033FC0027F189BEA135E98AF4C09B91"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -336,11 +311,6 @@
             "AssemblyAsmDisplayName" = "8:taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_FD7777115A0D86E845516BBD58D2F0C6"
-                    {
-                    "Name" = "8:taglib-sharp.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:taglib-sharp.dll"
             "TargetName" = "8:"
@@ -427,15 +397,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:cdouMusic"
-        "ProductCode" = "8:{E2ECB77F-AA97-4027-ACA2-10CE02DADEBC}"
-        "PackageCode" = "8:{7E9688E2-739C-49BF-97A7-CD05426B56C6}"
+        "ProductCode" = "8:{284EE9EB-AC8B-4E84-98AF-C408CD785917}"
+        "PackageCode" = "8:{9F371C23-E5CC-425D-BB98-19CA47EA9FCF}"
         "UpgradeCode" = "8:{27958B04-E3E5-448D-89CB-B5B2E24BD0C3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.2.1"
+        "ProductVersion" = "8:1.2.2"
         "Manufacturer" = "8:Rugamba.Inc"
         "ARPHELPTELEPHONE" = "8:+27630750694"
         "ARPHELPLINK" = "8:rugced@yahoo.fr"
