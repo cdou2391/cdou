@@ -810,35 +810,75 @@ namespace Music_Player
         private void loadPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+
+            openFile.Filter = "Playlist|*.cdplst|Playlist|*.m3u";
+            
+            openFile.InitialDirectory = playListPath;
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                StreamReader sr = new StreamReader(openFile.FileName);
-                string[] files = File.ReadAllLines(openFile.FileName);
                 listView1.Items.Clear();
-                foreach (var fil in files)
+                FileInfo fInf = new FileInfo(openFile.FileName);
+                if (fInf.Extension == ".m3u")
                 {
-                    int x = 0;
-                    if (files.Length >=1)
+                    int k = 2;
+                    string[] songsF = File.ReadAllLines(openFile.FileName);
+                    
+                    for (int y = 0; y < songsF.Length; y++)
                     {
-                        FileInfo fileInfo = new FileInfo(fil);
-                        try
+                        int x = 0;
+                            if (songsF.Length >= 1 && k<songsF.Length)
+                            {
+                                FileInfo fileInfo = new FileInfo(songsF[k]);
+                                try
+                                {
+                                    string[] songMetaData = { dataS.songTitle(songsF[k]), dataS.songArtist(songsF[k]) ,dataS.songAlbum(songsF[k]),
+                                                              dataS.songLength(songsF[k]).ToString(@"mm\;ss"),dataS.songGenre(songsF[k]),dataS.songYear(songsF[k]),
+                                                              dataS.dateModified(songsF[k])};
+
+                                    listView1.Items.Add(songsF[k]).SubItems.AddRange(songMetaData);
+                                    x++;
+                                }
+                                catch (Exception ex)
+
+                                {
+                                    MessageBox.Show("error" + ex.Message);
+                                    listView1.Items.Add(songsF[k]).SubItems.Add(fileInfo.Name);
+                                    x++;
+                                }
+                            }
+                        k = k + 2;
+                    }
+                    
+                }
+                else
+                {
+                    string[] files = File.ReadAllLines(openFile.FileName);
+                    listView1.Items.Clear();
+                    foreach (var fil in files)
+                    {
+                        int x = 0;
+                        if (files.Length >= 1)
                         {
-                            string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                            FileInfo fileInfo = new FileInfo(fil);
+                            try
+                            {
+                                string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
                                                               dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
                                                               dataS.dateModified(fil)};
 
-                            listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                            x++;
+                                listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                                x++;
+                            }
+                            catch (Exception)
+                            {
+                                listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                                x++;
+                            }
                         }
-                        catch (Exception)
+                        else
                         {
-                            listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                            x++;
+                            MessageBox.Show("The playlist is empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("The playlist is empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
