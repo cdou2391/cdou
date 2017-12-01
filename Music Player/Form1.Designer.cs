@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Folders");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -45,6 +45,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripPlay = new System.Windows.Forms.ToolStripMenuItem();
             this.showNowPlayingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveSsPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteFromDriveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,7 +86,9 @@
             this.tBVolume = new System.Windows.Forms.TrackBar();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.saveSsPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.loadPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -203,13 +206,14 @@
             this.toolStripPlay,
             this.showNowPlayingToolStripMenuItem,
             this.saveSsPlaylistToolStripMenuItem,
+            this.loadPlaylistToolStripMenuItem,
             this.editPropertiesToolStripMenuItem,
             this.toolStripSeparator2,
             this.deleteFromDriveToolStripMenuItem,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 164);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 186);
             // 
             // toolStripPlay
             // 
@@ -224,6 +228,13 @@
             this.showNowPlayingToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.showNowPlayingToolStripMenuItem.Text = "Show Now Playing";
             this.showNowPlayingToolStripMenuItem.Click += new System.EventHandler(this.showNowPlayingToolStripMenuItem_Click);
+            // 
+            // saveSsPlaylistToolStripMenuItem
+            // 
+            this.saveSsPlaylistToolStripMenuItem.Name = "saveSsPlaylistToolStripMenuItem";
+            this.saveSsPlaylistToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.saveSsPlaylistToolStripMenuItem.Text = "Save as playlist";
+            this.saveSsPlaylistToolStripMenuItem.Click += new System.EventHandler(this.saveSsPlaylistToolStripMenuItem_Click);
             // 
             // editPropertiesToolStripMenuItem
             // 
@@ -291,10 +302,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Folders";
+            treeNode6.Name = "Node0";
+            treeNode6.Text = "Folders";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode6});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 426);
             this.treeView1.TabIndex = 0;
@@ -654,11 +665,21 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // saveSsPlaylistToolStripMenuItem
+            // saveFileDialog1
             // 
-            this.saveSsPlaylistToolStripMenuItem.Name = "saveSsPlaylistToolStripMenuItem";
-            this.saveSsPlaylistToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.saveSsPlaylistToolStripMenuItem.Text = "Save as playlist";
+            this.saveFileDialog1.CheckFileExists = true;
+            this.saveFileDialog1.DefaultExt = "cdplst";
+            // 
+            // loadPlaylistToolStripMenuItem
+            // 
+            this.loadPlaylistToolStripMenuItem.Name = "loadPlaylistToolStripMenuItem";
+            this.loadPlaylistToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.loadPlaylistToolStripMenuItem.Text = "Load playlist";
+            this.loadPlaylistToolStripMenuItem.Click += new System.EventHandler(this.loadPlaylistToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -763,6 +784,9 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.ToolStripMenuItem saveSsPlaylistToolStripMenuItem;
+        internal System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem loadPlaylistToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

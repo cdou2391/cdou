@@ -32,12 +32,12 @@ namespace Music_Player
         Stopwatch watch1= new Stopwatch();
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Cdou Music Player\playing.txt";
         internal int numPrev = 1;
-
+        string playListPath = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
 
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
-            Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Cdou Music Player"));
+            Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Cdou Music Player"));
             File.Create(filePath);
 
             richTextBox1.Text = "Lyrics";
@@ -784,6 +784,63 @@ namespace Music_Player
             else
             {
                 MessageBox.Show("The file you are trying to play is not a song\r\nPlease only drop a song here!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void saveSsPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "CdouPlaylist | *.cdplst";
+            save.InitialDirectory = playListPath;
+
+            if(save.ShowDialog()==DialogResult.OK)
+            {
+                //File.Create(save.FileName);
+                using (StreamWriter sw = new StreamWriter(save.FileName))
+                {
+                    for(int x=0;x<listView1.SelectedItems.Count;x++)
+                    {
+                        sw.WriteLine(listView1.SelectedItems[x].Text);
+                    }
+                    sw.Close();
+                }
+            }
+        }
+
+        private void loadPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(openFile.FileName);
+                string[] files = File.ReadAllLines(openFile.FileName);
+                listView1.Items.Clear();
+                foreach (var fil in files)
+                {
+                    int x = 0;
+                    if (files.Length >=1)
+                    {
+                        FileInfo fileInfo = new FileInfo(fil);
+                        try
+                        {
+                            string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                                                              dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
+                                                              dataS.dateModified(fil)};
+
+                            listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                            x++;
+                        }
+                        catch (Exception)
+                        {
+                            listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                            x++;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The playlist is empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
         }
     }
