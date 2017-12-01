@@ -64,13 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_558D122E5ED73C89F9235288E301CA87"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7DD0989400C3FD76BF751BFEB9352BC5"
+        "OwnerKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,7 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D033FC0027F189BEA135E98AF4C09B91"
+        "OwnerKey" = "8:_7DD0989400C3FD76BF751BFEB9352BC5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_558D122E5ED73C89F9235288E301CA87"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -397,15 +397,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:cdouMusic"
-        "ProductCode" = "8:{284EE9EB-AC8B-4E84-98AF-C408CD785917}"
-        "PackageCode" = "8:{9F371C23-E5CC-425D-BB98-19CA47EA9FCF}"
+        "ProductCode" = "8:{6213068A-233F-4EF5-8B1E-B6D377850D34}"
+        "PackageCode" = "8:{BB4A6F65-EE4F-4893-99C0-257F4226C49D}"
         "UpgradeCode" = "8:{27958B04-E3E5-448D-89CB-B5B2E24BD0C3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.2.2"
+        "ProductVersion" = "8:1.2.3"
         "Manufacturer" = "8:Rugamba.Inc"
         "ARPHELPTELEPHONE" = "8:+27630750694"
         "ARPHELPLINK" = "8:rugced@yahoo.fr"

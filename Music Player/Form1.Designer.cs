@@ -46,7 +46,6 @@
             this.toolStripPlay = new System.Windows.Forms.ToolStripMenuItem();
             this.showNowPlayingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteFromDriveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFromListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +85,7 @@
             this.tBVolume = new System.Windows.Forms.TrackBar();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.saveSsPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -202,46 +202,40 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripPlay,
             this.showNowPlayingToolStripMenuItem,
+            this.saveSsPlaylistToolStripMenuItem,
             this.editPropertiesToolStripMenuItem,
-            this.StripMenuAdd,
             this.toolStripSeparator2,
             this.deleteFromDriveToolStripMenuItem,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 142);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 164);
             // 
             // toolStripPlay
             // 
             this.toolStripPlay.Name = "toolStripPlay";
-            this.toolStripPlay.Size = new System.Drawing.Size(178, 22);
+            this.toolStripPlay.Size = new System.Drawing.Size(173, 22);
             this.toolStripPlay.Text = "Play";
             this.toolStripPlay.Click += new System.EventHandler(this.toolStripPlay_Click);
             // 
             // showNowPlayingToolStripMenuItem
             // 
             this.showNowPlayingToolStripMenuItem.Name = "showNowPlayingToolStripMenuItem";
-            this.showNowPlayingToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.showNowPlayingToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.showNowPlayingToolStripMenuItem.Text = "Show Now Playing";
             this.showNowPlayingToolStripMenuItem.Click += new System.EventHandler(this.showNowPlayingToolStripMenuItem_Click);
             // 
             // editPropertiesToolStripMenuItem
             // 
             this.editPropertiesToolStripMenuItem.Name = "editPropertiesToolStripMenuItem";
-            this.editPropertiesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.editPropertiesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.editPropertiesToolStripMenuItem.Text = "Edit Properties";
             this.editPropertiesToolStripMenuItem.Click += new System.EventHandler(this.editPropertiesToolStripMenuItem_Click);
-            // 
-            // StripMenuAdd
-            // 
-            this.StripMenuAdd.Name = "StripMenuAdd";
-            this.StripMenuAdd.Size = new System.Drawing.Size(178, 22);
-            this.StripMenuAdd.Text = "Add to now playing";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(175, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
             // 
             // deleteFromDriveToolStripMenuItem
             // 
@@ -249,7 +243,7 @@
             this.deleteFromListToolStripMenuItem,
             this.deleteFromFolderToolStripMenuItem});
             this.deleteFromDriveToolStripMenuItem.Name = "deleteFromDriveToolStripMenuItem";
-            this.deleteFromDriveToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.deleteFromDriveToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.deleteFromDriveToolStripMenuItem.Text = "Delete";
             // 
             // deleteFromListToolStripMenuItem
@@ -269,7 +263,7 @@
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(178, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem4.Text = "Exit";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click_1);
             // 
@@ -660,6 +654,12 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // saveSsPlaylistToolStripMenuItem
+            // 
+            this.saveSsPlaylistToolStripMenuItem.Name = "saveSsPlaylistToolStripMenuItem";
+            this.saveSsPlaylistToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.saveSsPlaylistToolStripMenuItem.Text = "Save as playlist";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -740,7 +740,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteFromListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteFromDriveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem StripMenuAdd;
         private System.Windows.Forms.ToolStripMenuItem toolStripPlay;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -763,6 +762,7 @@
         private System.Windows.Forms.TrackBar tBSongProgress;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.ToolStripMenuItem saveSsPlaylistToolStripMenuItem;
     }
 }
 

@@ -27,20 +27,20 @@ namespace Music_Player
         bool shuffleOn = false;
         AudioFileReader reader;
         internal string songPath;
+        internal string playSong;
         WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Cdou Music Player\playing.txt";
-
+        internal int numPrev = 1;
 
 
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
             Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Cdou Music Player"));
-
             File.Create(filePath);
-            richTextBox1.Text = "Lyrics";
 
+            richTextBox1.Text = "Lyrics";
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;
             timer3.Interval = 1;
@@ -59,32 +59,25 @@ namespace Music_Player
         }
         public void songPlay(string songPath1)
         {
-
-            
-            using (TextWriter sWriter = new StreamWriter(filePath, append: true))
-            {
-                sWriter.WriteLine(songPath1);
-                sWriter.Dispose();
-            }
+            playSong = songPath1;
             try
             {
                 waveOutDevice.Dispose();
 
                 
-                reader = new AudioFileReader(songPath1);
+                reader = new AudioFileReader(playSong);
                 waveOutDevice.Init(reader);
                 waveOutDevice.Play();
                 timer3.Start();
-
-                string[] songMetaData = { dataS.songTitle(songPath1), dataS.songArtist(songPath1), dataS.songLength(songPath1).ToString(@"mm\:ss") };
-                FileInfo fileInfo = new FileInfo(songPath1);
-                label1.Text = dataS.songTitle(songPath1) + " - " + dataS.songArtist(songPath1);
+                string[] songMetaData = { dataS.songTitle(playSong), dataS.songArtist(playSong), dataS.songLength(playSong).ToString(@"mm\:ss") };
+                FileInfo fileInfo = new FileInfo(playSong);
+                label1.Text = dataS.songTitle(playSong) + " - " + dataS.songArtist(playSong);
 
                 richTextBox1.Enabled = true;
-                richTextBox1.Text = dataS.songLyrics(songPath1);
+                richTextBox1.Text = dataS.songLyrics(playSong);
 
                 pictureBox1.Visible = true;
-                pictureBox1.Image = dataS.songAlbumArt(songPath1);
+                pictureBox1.Image = dataS.songAlbumArt(playSong);
                 tBVolume.Value = tBVolume.Value;
                 waveOutDevice.Volume = ((float)tBVolume.Value) / 100;
                 lblVol.Text = Convert.ToString("Vol: " + tBVolume.Value + "%");
@@ -102,8 +95,15 @@ namespace Music_Player
         {
             try
             {
+                numPrev = 1;
                 songPath = listView1.SelectedItems[0].Text;
                 songPlay(songPath);
+                using (TextWriter sWriter = new StreamWriter(filePath, append: true))
+                {
+                    sWriter.WriteLine(songPath);
+                    sWriter.Dispose();
+                }
+
             }
             catch(Exception ex)
             {
@@ -117,6 +117,12 @@ namespace Music_Player
             {
                 songPath = listView1.SelectedItems[0].Text;
                 songPlay(songPath);
+                numPrev = 1;
+                using (TextWriter sWriter = new StreamWriter(filePath, append: true))
+                {
+                    sWriter.WriteLine(songPath);
+                    sWriter.Dispose();
+                }
             }
             catch (Exception ex)
             {
@@ -297,6 +303,7 @@ namespace Music_Player
             // play the selected song using the button play
             try
             {
+                numPrev = 1;
                 if (waveOutDevice.PlaybackState==PlaybackState.Paused)
                 {
                      waveOutDevice.Resume();
@@ -309,6 +316,11 @@ namespace Music_Player
                 {
                     songPath = listView1.SelectedItems[0].Text;
                     songPlay(songPath);
+                    using (TextWriter sWriter = new StreamWriter(filePath, append: true))
+                    {
+                        sWriter.WriteLine(songPath);
+                        sWriter.Dispose();
+                    }
                 }
             }
             catch(Exception ex)
@@ -323,6 +335,7 @@ namespace Music_Player
             waveOutDevice.Dispose();
             tBSongProgress.Value = 0;
             timer3.Stop();
+            numPrev = 1;
         }
         Random rnd = new Random();
        
@@ -331,13 +344,13 @@ namespace Music_Player
             //play the next song on the list
             try
             {
+                numPrev = 1;
                 int rndIndex = rnd.Next(0, listView1.Items.Count - 1);
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
-                var nowSong = listView1.FindItemWithText(dataS.songTitle(songPath)); 
+                var nowSong = listView1.FindItemWithText(dataS.songTitle(playSong)); 
                 int songIndex = listView1.Items.IndexOf(nowSong);
                 listView1.Items[songIndex].Selected = false;
-
                 if (songIndex == listView1.Items.Count-1)
                 {
                     songIndex = 0;
@@ -354,9 +367,14 @@ namespace Music_Player
                 listView1.Items[songIndex].Selected = true;
                 listView1.Select();
             
-                string songPath1 = listView1.Items[songIndex].Text;
-                songPlay(songPath1);
-                songPath = songPath1;
+                string Nextsong= listView1.Items[songIndex].Text;
+                songPlay(Nextsong);
+                using (TextWriter sWriter = new StreamWriter(filePath, append: true))
+                {
+                    sWriter.WriteLine(Nextsong);
+                    sWriter.Dispose();
+                }
+                songPath = Nextsong;
             }
             catch (Exception)
             {
@@ -364,7 +382,7 @@ namespace Music_Player
                 btnPause.Visible = false;
             }
         }
-        internal int numPrev = 2;
+        
         private void btnPrev_Click(object sender, EventArgs e)
         {
             try
@@ -375,9 +393,15 @@ namespace Music_Player
                 listView1.FindItemWithText(listView1.SelectedItems[0].Text).Selected = false;
                 listView1.FindItemWithText(previousSong).Selected=true;
                 songPlay(previousSong);
-                numPrev=numPrev+2;
+                btnPlay.Visible = false;
+                btnPause.Visible = true;
+                numPrev =numPrev+1;
             }
-            catch { }
+            catch
+            {
+                btnPlay.Visible = true;
+                btnPause.Visible = false;
+            }
            
             
         }
