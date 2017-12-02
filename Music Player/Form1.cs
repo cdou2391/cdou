@@ -153,11 +153,16 @@ namespace Music_Player
         private void deleteFromListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //delete the file selected from the list
-            string fileList = listView1.SelectedItems[0].Text;
+            var fileList = listView1.SelectedItems;
             var userChoice = MessageBox.Show("Are you want to delete that file?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            int toDelete = fileList.Count;
             if (userChoice == DialogResult.Yes)
             {
-                listView1.SelectedItems[0].Remove();
+                for(int y = 0; y < toDelete; y++)
+                {
+                    listView1.SelectedItems[0].Remove();
+                }
+                
             }
         }
         private ColumnHeader SortingColumn = null;
@@ -662,13 +667,75 @@ namespace Music_Player
             {
                 string[] dropedFiles = (string[])e.Data.GetData(DataFormats.FileDrop, true);
                 bool isFolder = Directory.Exists(dropedFiles[0]);
-                if (isFolder == true)
+                FileInfo fileI = new FileInfo(dropedFiles[0]);
+                if (fileI.Extension == ".m3u" || fileI.Extension== ".cdplst")
+                {
+                    if (fileI.Extension == ".m3u")
+                    {
+                        int k = 2;
+                        string[] songsF = File.ReadAllLines(dropedFiles[0]);
+
+                        for (int y = 0; y < songsF.Length; y++)
+                        {
+                            if (songsF.Length >= 1 && k < songsF.Length)
+                            {
+                                FileInfo fileInfo = new FileInfo(songsF[k]);
+                                try
+                                {
+                                    string[] songMetaData = { dataS.songTitle(songsF[k]), dataS.songArtist(songsF[k]) ,dataS.songAlbum(songsF[k]),
+                                                              dataS.songLength(songsF[k]).ToString(@"mm\;ss"),dataS.songGenre(songsF[k]),dataS.songYear(songsF[k]),
+                                                              dataS.dateModified(songsF[k])};
+
+                                    listView1.Items.Add(songsF[k]).SubItems.AddRange(songMetaData);
+                                }
+                                catch (Exception ex)
+
+                                {
+                                    MessageBox.Show(ex.Message,"Error");
+                                    //listView1.Items.Add(songsF[k]).SubItems.Add(fileInfo.Name);
+                                }
+                            }
+                            k = k + 2;
+                        }
+                    }
+                    else
+                    {
+                        string[] files = File.ReadAllLines(dropedFiles[0]);
+                        listView1.Items.Clear();
+                        foreach (var fil in files)
+                        {
+                            int x = 0;
+                            if (files.Length >= 1)
+                            {
+                                FileInfo fileInfo = new FileInfo(fil);
+                                try
+                                {
+                                    string[] songMetaData = { dataS.songTitle(fil), dataS.songArtist(fil) ,dataS.songAlbum(fil),
+                                                              dataS.songLength(fil).ToString(@"mm\;ss"),dataS.songGenre(fil),dataS.songYear(fil),
+                                                              dataS.dateModified(fil)};
+
+                                    listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
+                                    x++;
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message, "Error");
+                                    //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("The playlist is empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+                else if (isFolder == true)
                 {
                     for (int y = 0; y < dropedFiles.Length; y++)
                     {
                         files = getFiles.GetFiles(dropedFiles[y]);
                     }
-                    int x = 0;
                     foreach (var fil in files)
                     {
                         if (files.Count != 0)
@@ -682,13 +749,12 @@ namespace Music_Player
                                                               dataS.dateModified(fil)};
 
                                     listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                                    x++;
                                 }
-                                catch (Exception)
-                                {
-                                    listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                                    x++;
-                                }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error");
+                                //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
+                            }
                         }
                         else
                         {
@@ -698,7 +764,6 @@ namespace Music_Player
                 }
                 else
                 {
-                    int x = 0;
                     foreach (var fil in dropedFiles)
                     {
                         if (dropedFiles.Length != 0)
@@ -713,12 +778,11 @@ namespace Music_Player
                                                               dataS.dateModified(fil)};
 
                                     listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                                    x++;
                                 }
-                                catch (Exception)
+                                catch (Exception ex)
                                 {
-                                    listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                                    x++;
+                                    MessageBox.Show(ex.Message, "Error");
+                                    //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
                                 }
                             }
                             else
@@ -825,7 +889,6 @@ namespace Music_Player
                     
                     for (int y = 0; y < songsF.Length; y++)
                     {
-                        int x = 0;
                             if (songsF.Length >= 1 && k<songsF.Length)
                             {
                                 FileInfo fileInfo = new FileInfo(songsF[k]);
@@ -836,19 +899,16 @@ namespace Music_Player
                                                               dataS.dateModified(songsF[k])};
 
                                     listView1.Items.Add(songsF[k]).SubItems.AddRange(songMetaData);
-                                    x++;
                                 }
                                 catch (Exception ex)
 
                                 {
-                                    MessageBox.Show("error" + ex.Message);
-                                    listView1.Items.Add(songsF[k]).SubItems.Add(fileInfo.Name);
-                                    x++;
-                                }
+                                MessageBox.Show(ex.Message, "Error");
+                                //listView1.Items.Add(songsF[k]).SubItems.Add(fileInfo.Name);
+                            }
                             }
                         k = k + 2;
                     }
-                    
                 }
                 else
                 {
@@ -856,7 +916,6 @@ namespace Music_Player
                     listView1.Items.Clear();
                     foreach (var fil in files)
                     {
-                        int x = 0;
                         if (files.Length >= 1)
                         {
                             FileInfo fileInfo = new FileInfo(fil);
@@ -867,12 +926,11 @@ namespace Music_Player
                                                               dataS.dateModified(fil)};
 
                                 listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
-                                x++;
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
-                                listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
-                                x++;
+                                MessageBox.Show(ex.Message, "Error");
+                                //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
                             }
                         }
                         else
