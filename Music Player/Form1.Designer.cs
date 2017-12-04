@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Folders");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Music Library");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -69,6 +69,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compactModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
@@ -310,7 +313,7 @@
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node0";
-            treeNode1.Text = "Folders";
+            treeNode1.Text = "Music Library";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
             this.treeView1.ShowLines = false;
@@ -434,7 +437,8 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.viewToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -442,6 +446,29 @@
             this.menuStrip1.Size = new System.Drawing.Size(1354, 23);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fullModeToolStripMenuItem,
+            this.compactModeToolStripMenuItem});
+            this.viewToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 19);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // fullModeToolStripMenuItem
+            // 
+            this.fullModeToolStripMenuItem.Name = "fullModeToolStripMenuItem";
+            this.fullModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.fullModeToolStripMenuItem.Text = "Full Mode";
+            // 
+            // compactModeToolStripMenuItem
+            // 
+            this.compactModeToolStripMenuItem.Name = "compactModeToolStripMenuItem";
+            this.compactModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.compactModeToolStripMenuItem.Text = "Compact Mode";
+            this.compactModeToolStripMenuItem.Click += new System.EventHandler(this.compactModeToolStripMenuItem_Click);
             // 
             // btnPlay
             // 
@@ -531,8 +558,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label1.Location = new System.Drawing.Point(330, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 24);
+            this.label1.Size = new System.Drawing.Size(50, 24);
             this.label1.TabIndex = 14;
+            this.label1.Text = "Title";
             // 
             // label3
             // 
@@ -576,7 +604,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(1183, 9);
+            this.pictureBox5.Location = new System.Drawing.Point(1183, 12);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(40, 40);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -703,6 +731,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cdou Music Player";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
@@ -788,6 +817,9 @@
         internal System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem loadPlaylistToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compactModeToolStripMenuItem;
     }
 }
 
