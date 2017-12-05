@@ -27,7 +27,7 @@ namespace Music_Player
         internal static bool shuffleOn = false;
         AudioFileReader reader;
         internal string songPath;
-        internal string playSong;
+        internal static string playSong;
         internal static WaveOut waveOutDevice = new WaveOut();
         Stopwatch watch1= new Stopwatch();
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Cdou Music Player\playing.txt";
@@ -42,6 +42,7 @@ namespace Music_Player
             Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Cdou Music Player"));
             try
             {
+
                 if (File.Exists(defaultPlayList) == true)
                 {
                     goto LoadListView;
@@ -103,9 +104,13 @@ namespace Music_Player
         }
         public void songPlay(string songPath1)
         {
+            
             playSong = songPath1;
             try
             {
+                //StreamWriter sw = new StreamWriter(filePath);
+                //sw.WriteLine("Hello");
+
                 waveOutDevice.Dispose();
                 reader = new AudioFileReader(playSong);
                 waveOutDevice.Init(reader);
@@ -126,10 +131,15 @@ namespace Music_Player
 
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
+               
             }
-            catch(ArgumentNullException ex)
+            catch(ArgumentNullException exNull)
             {
-                MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select a song to play first \r\n" + exNull.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -144,6 +154,7 @@ namespace Music_Player
                 {
                     sWriter.WriteLine(songPath);
                     sWriter.Dispose();
+                    sWriter.Close();
                 }
             }
             catch(Exception ex)
@@ -992,13 +1003,39 @@ namespace Music_Player
             File.SetAttributes(defaultPlayList, File.GetAttributes(defaultPlayList) | FileAttributes.Hidden);
             File.SetAttributes(filePath, File.GetAttributes(filePath) | FileAttributes.Hidden);
         }
-        miniPlayer mini;
-        //Form1 frm1 = new Form1();
         private void compactModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mini = new miniPlayer();
-            mini.Show();
-            this.Hide();
+            tBSongProgress.Width = 323;
+            compactModeToolStripMenuItem.Visible = false;
+            fullModeToolStripMenuItem.Visible = true;
+            this.Height = 169;
+            this.Width = 466;
+            panel1.Hide();
+            panel2.Hide();
+            panel4.Hide();
+            this.panel3.Dock = DockStyle.None;
+            this.panel3.Height = 108;
+            this.panel3.Width = 450;
+            
+            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label3.Location = new System.Drawing.Point(319, 77);
+            this.tBSongProgress.Location = new System.Drawing.Point(0, 77);
+            this.tBVolume.Location = new System.Drawing.Point(360, 9);
+            this.lblVol.Location = new System.Drawing.Point(369, 30);
+            this.lblVol.Text = "Vol:";
+            this.pictureBox4.Location = new System.Drawing.Point(320, 9);
+            this.pictureBox5.Location = new System.Drawing.Point(320, 9);
+            this.pictureBox2.Height = 30;
+            this.pictureBox2.Width = 30;
+            this.pictureBox3.Height = 30;
+            this.pictureBox3.Width = 30;
+            this.pictureBox4.Height = 30;
+            this.pictureBox4.Width = 30;
+            this.pictureBox5.Height = 30;
+            this.pictureBox5.Width = 30;
+            this.tBVolume.Height = 45;
+            this.tBVolume.Width = 90;
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

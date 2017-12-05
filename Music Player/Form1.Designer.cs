@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Music Library");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Music Library");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -312,10 +312,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Music Library";
+            treeNode9.Name = "Node0";
+            treeNode9.Text = "Music Library";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode9});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 426);
             this.treeView1.TabIndex = 0;
@@ -566,17 +566,20 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(1076, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 24);
+            this.label3.Size = new System.Drawing.Size(136, 29);
             this.label3.TabIndex = 15;
             this.label3.Text = "00:00/00:00";
             // 
             // panel3
             // 
             this.panel3.AllowDrop = true;
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pictureBox5);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.btnPlay);
@@ -589,7 +592,6 @@
             this.panel3.Controls.Add(this.lblVol);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.tBVolume);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -687,9 +689,10 @@
             this.tBVolume.Location = new System.Drawing.Point(1220, 12);
             this.tBVolume.Maximum = 100;
             this.tBVolume.Name = "tBVolume";
-            this.tBVolume.Size = new System.Drawing.Size(142, 45);
+            this.tBVolume.Size = new System.Drawing.Size(134, 45);
             this.tBVolume.TabIndex = 26;
             this.tBVolume.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tBVolume.Value = 25;
             this.tBVolume.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // folderBrowserDialog1
@@ -715,6 +718,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1354, 733);
@@ -725,10 +729,10 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(777, 439);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "cdou Music Player";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -808,8 +812,6 @@
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.ColumnHeader colDateMod;
         private System.Windows.Forms.Timer timer3;
-        private System.Windows.Forms.Label lblVol;
-        private System.Windows.Forms.TrackBar tBVolume;
         private System.Windows.Forms.TrackBar tBSongProgress;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -820,6 +822,8 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compactModeToolStripMenuItem;
+        internal System.Windows.Forms.TrackBar tBVolume;
+        internal System.Windows.Forms.Label lblVol;
     }
 }
 
