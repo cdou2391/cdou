@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Music Library");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Music Library");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -312,10 +312,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Music Library";
+            treeNode3.Name = "Node0";
+            treeNode3.Text = "Music Library";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode3});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 426);
             this.treeView1.TabIndex = 0;
@@ -731,6 +731,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

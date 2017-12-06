@@ -1005,11 +1005,12 @@ namespace Music_Player
         }
         private void compactModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.MinimumSize = new System.Drawing.Size(450, 150);
             tBSongProgress.Width = 323;
             compactModeToolStripMenuItem.Visible = false;
             fullModeToolStripMenuItem.Visible = true;
-            this.Height = 169;
-            this.Width = 466;
+            this.Height = 170;
+            this.Width = 470;
             panel1.Hide();
             panel2.Hide();
             panel4.Hide();
@@ -1035,14 +1036,17 @@ namespace Music_Player
             this.tBVolume.Height = 45;
             this.tBVolume.Width = 90;
             this.WindowState = FormWindowState.Normal;
+            this.MaximizeBox = false;
         }
 
         private void fullModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.MaximizeBox = true;
             panel1.Show();
             panel2.Show();
             panel4.Show();
             this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = new System.Drawing.Size(1370, 772);
             compactModeToolStripMenuItem.Visible = true;
             fullModeToolStripMenuItem.Visible = false;
             this.panel3.Dock = DockStyle.Top;
