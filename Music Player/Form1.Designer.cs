@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Music Library");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Music Library");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -312,10 +312,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode9.Name = "Node0";
-            treeNode9.Text = "Music Library";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "Music Library";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9});
+            treeNode2});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 426);
             this.treeView1.TabIndex = 0;
@@ -462,6 +462,7 @@
             this.fullModeToolStripMenuItem.Name = "fullModeToolStripMenuItem";
             this.fullModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.fullModeToolStripMenuItem.Text = "Full Mode";
+            this.fullModeToolStripMenuItem.Click += new System.EventHandler(this.fullModeToolStripMenuItem_Click);
             // 
             // compactModeToolStripMenuItem
             // 
@@ -569,7 +570,7 @@
             this.label3.BackColor = System.Drawing.Color.Black;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(1076, 55);
+            this.label3.Location = new System.Drawing.Point(1215, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 29);
             this.label3.TabIndex = 15;
@@ -579,6 +580,7 @@
             // 
             this.panel3.AllowDrop = true;
             this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.lblVol);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pictureBox5);
             this.panel3.Controls.Add(this.pictureBox4);
@@ -589,7 +591,6 @@
             this.panel3.Controls.Add(this.btnPrev);
             this.panel3.Controls.Add(this.btnNext);
             this.panel3.Controls.Add(this.tBSongProgress);
-            this.panel3.Controls.Add(this.lblVol);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.label1);
@@ -646,7 +647,7 @@
             this.tBSongProgress.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tBSongProgress.Location = new System.Drawing.Point(3, 55);
             this.tBSongProgress.Name = "tBSongProgress";
-            this.tBSongProgress.Size = new System.Drawing.Size(1065, 45);
+            this.tBSongProgress.Size = new System.Drawing.Size(1211, 45);
             this.tBSongProgress.TabIndex = 27;
             this.tBSongProgress.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tBSongProgress.Scroll += new System.EventHandler(this.trackBar2_Scroll);

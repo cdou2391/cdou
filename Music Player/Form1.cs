@@ -1022,7 +1022,6 @@ namespace Music_Player
             this.tBSongProgress.Location = new System.Drawing.Point(0, 77);
             this.tBVolume.Location = new System.Drawing.Point(360, 9);
             this.lblVol.Location = new System.Drawing.Point(369, 30);
-            this.lblVol.Text = "Vol:";
             this.pictureBox4.Location = new System.Drawing.Point(320, 9);
             this.pictureBox5.Location = new System.Drawing.Point(320, 9);
             this.pictureBox2.Height = 30;
@@ -1036,6 +1035,36 @@ namespace Music_Player
             this.tBVolume.Height = 45;
             this.tBVolume.Width = 90;
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void fullModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Show();
+            panel2.Show();
+            panel4.Show();
+            this.WindowState = FormWindowState.Maximized;
+            compactModeToolStripMenuItem.Visible = true;
+            fullModeToolStripMenuItem.Visible = false;
+            this.panel3.Dock = DockStyle.Top;
+            this.panel3.Height = 87;
+            this.panel3.Width = 1354;
+            this.pictureBox2.Height = 40;
+            this.pictureBox2.Width = 40;
+            this.pictureBox3.Height = 40;
+            this.pictureBox3.Width = 40;
+            this.pictureBox4.Height = 40;
+            this.pictureBox4.Width = 40;
+            this.pictureBox5.Height = 40;
+            this.pictureBox5.Width = 40;
+            tBSongProgress.Width = 1211;
+            this.tBVolume.Width = 134;
+            this.pictureBox4.Location = new System.Drawing.Point(1183, 12);
+            this.pictureBox5.Location = new System.Drawing.Point(1183, 12);
+            this.tBVolume.Location = new System.Drawing.Point(1220, 12);
+            this.tBSongProgress.Location = new System.Drawing.Point(3, 55);
+            this.label1.Location = new System.Drawing.Point(330, 12);
+            this.lblVol.Location = new System.Drawing.Point(1229, 35);
+            this.label3.Location = new System.Drawing.Point(1215, 55);
         }
     }
 }
