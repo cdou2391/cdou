@@ -7,6 +7,7 @@ using System.Collections;
 using System.Diagnostics;
 using NAudio.Wave;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace Music_Player
 {
@@ -610,18 +611,31 @@ namespace Music_Player
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            foreach(ListViewItem item in listView1.Items)
+            if (txtSearch.Text != "")
             {
-                if(txtSearch.Text.Length>0 && item.SubItems[1].Text.ToLower().StartsWith(txtSearch.Text.ToLower()))
+                for (int i = listView1.Items.Count - 1; i >= 0; i--)
                 {
-                    item.Selected = true;
+                    var item = listView1.Items[i];
+                    if (item.Text.ToLower().Contains(txtSearch.Text.ToLower()))
+                    {
+                        item.BackColor = SystemColors.Highlight;
+                        item.ForeColor = SystemColors.HighlightText;
+                    }
+                    else
+                    {
+                        listView1.Items.Remove(item);
+                    }
                 }
                 if (listView1.SelectedItems.Count == 1)
                 {
-                    //listView1.Focus();
+                    listView1.Focus();
                 }
             }
-        }
+            else
+            {
+            }
+        
+    }
         
         // Manage the volume
         public static class NativeMethods
