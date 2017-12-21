@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Music Library");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Music Library");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -58,6 +58,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lstVPlayList = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,10 +72,17 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compactModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lyricsNowPlayingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showLyricsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showNowPlayingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.showBothToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
@@ -92,6 +103,9 @@
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -115,7 +129,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(197, 110);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(737, 623);
+            this.panel1.Size = new System.Drawing.Size(745, 623);
             this.panel1.TabIndex = 0;
             // 
             // txtSearch
@@ -154,7 +168,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(737, 623);
+            this.listView1.Size = new System.Drawing.Size(745, 623);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 21;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -313,10 +327,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "Music Library";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "Music Library";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode2});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 426);
             this.treeView1.TabIndex = 0;
@@ -340,8 +354,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.richTextBox1);
+            this.panel2.Controls.Add(this.lstVPlayList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(934, 110);
+            this.panel2.Location = new System.Drawing.Point(942, 110);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(420, 623);
             this.panel2.TabIndex = 1;
@@ -357,9 +372,48 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.richTextBox1.Size = new System.Drawing.Size(420, 623);
+            this.richTextBox1.Size = new System.Drawing.Size(420, 311);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "Lyrics";
+            // 
+            // lstVPlayList
+            // 
+            this.lstVPlayList.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lstVPlayList.AllowColumnReorder = true;
+            this.lstVPlayList.AllowDrop = true;
+            this.lstVPlayList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lstVPlayList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstVPlayList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lstVPlayList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lstVPlayList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstVPlayList.ForeColor = System.Drawing.Color.White;
+            this.lstVPlayList.FullRowSelect = true;
+            this.lstVPlayList.HideSelection = false;
+            this.lstVPlayList.Location = new System.Drawing.Point(0, 311);
+            this.lstVPlayList.Name = "lstVPlayList";
+            this.lstVPlayList.Size = new System.Drawing.Size(420, 312);
+            this.lstVPlayList.TabIndex = 22;
+            this.lstVPlayList.UseCompatibleStateImageBehavior = false;
+            this.lstVPlayList.View = System.Windows.Forms.View.Details;
+            this.lstVPlayList.DoubleClick += new System.EventHandler(this.lstVPlayList_DoubleClick);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Path";
+            this.columnHeader3.Width = 0;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Title";
+            this.columnHeader1.Width = 357;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Time";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // toolStripMenuItem3
             // 
@@ -419,7 +473,10 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.openFileToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.exitToolStripMenuItem});
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 19);
@@ -428,10 +485,29 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(141, 22);
-            this.toolStripMenuItem2.Text = "Select Folder";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem2.Text = "Open Folder";
             this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // openFileToolStripMenuItem
+            // 
+            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.openFileToolStripMenuItem.Text = "Open File";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(136, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -444,7 +520,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(1354, 23);
+            this.menuStrip1.Size = new System.Drawing.Size(1362, 23);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -452,7 +528,8 @@
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fullModeToolStripMenuItem,
-            this.compactModeToolStripMenuItem});
+            this.compactModeToolStripMenuItem,
+            this.lyricsNowPlayingToolStripMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 19);
@@ -461,16 +538,47 @@
             // fullModeToolStripMenuItem
             // 
             this.fullModeToolStripMenuItem.Name = "fullModeToolStripMenuItem";
-            this.fullModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.fullModeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.fullModeToolStripMenuItem.Text = "Full Mode";
             this.fullModeToolStripMenuItem.Click += new System.EventHandler(this.fullModeToolStripMenuItem_Click);
             // 
             // compactModeToolStripMenuItem
             // 
             this.compactModeToolStripMenuItem.Name = "compactModeToolStripMenuItem";
-            this.compactModeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.compactModeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.compactModeToolStripMenuItem.Text = "Compact Mode";
             this.compactModeToolStripMenuItem.Click += new System.EventHandler(this.compactModeToolStripMenuItem_Click);
+            // 
+            // lyricsNowPlayingToolStripMenuItem
+            // 
+            this.lyricsNowPlayingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showLyricsToolStripMenuItem,
+            this.showNowPlayingToolStripMenuItem1,
+            this.showBothToolStripMenuItem});
+            this.lyricsNowPlayingToolStripMenuItem.Name = "lyricsNowPlayingToolStripMenuItem";
+            this.lyricsNowPlayingToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.lyricsNowPlayingToolStripMenuItem.Text = "Lyrics\\Now Playing";
+            // 
+            // showLyricsToolStripMenuItem
+            // 
+            this.showLyricsToolStripMenuItem.Name = "showLyricsToolStripMenuItem";
+            this.showLyricsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.showLyricsToolStripMenuItem.Text = "Show Lyrics";
+            this.showLyricsToolStripMenuItem.Click += new System.EventHandler(this.showLyricsToolStripMenuItem_Click);
+            // 
+            // showNowPlayingToolStripMenuItem1
+            // 
+            this.showNowPlayingToolStripMenuItem1.Name = "showNowPlayingToolStripMenuItem1";
+            this.showNowPlayingToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
+            this.showNowPlayingToolStripMenuItem1.Text = "Show Now Playing";
+            this.showNowPlayingToolStripMenuItem1.Click += new System.EventHandler(this.showNowPlayingToolStripMenuItem1_Click);
+            // 
+            // showBothToolStripMenuItem
+            // 
+            this.showBothToolStripMenuItem.Name = "showBothToolStripMenuItem";
+            this.showBothToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.showBothToolStripMenuItem.Text = "Show Both";
+            this.showBothToolStripMenuItem.Click += new System.EventHandler(this.showBothToolStripMenuItem_Click);
             // 
             // btnPlay
             // 
@@ -571,7 +679,7 @@
             this.label3.BackColor = System.Drawing.Color.Black;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(1215, 55);
+            this.label3.Location = new System.Drawing.Point(1223, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 29);
             this.label3.TabIndex = 15;
@@ -599,7 +707,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 23);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1354, 87);
+            this.panel3.Size = new System.Drawing.Size(1362, 87);
             this.panel3.TabIndex = 19;
             this.panel3.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel3_DragDrop);
             this.panel3.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel3_DragEnter);
@@ -700,6 +808,7 @@
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.SelectedPath = "A:\\Music";
+            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
             // timer3
             // 
@@ -712,8 +821,36 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "\"Playlist|*.cdplst|Playlist |*.m3u8 |All Files|*.*\"";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(373, -10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 31);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "-";
+            this.label2.Visible = false;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.MouseEnter += new System.EventHandler(this.label2_MouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.label2_MouseLeave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(428, -1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 20);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "X";
+            this.label4.Visible = false;
             // 
             // Form1
             // 
@@ -723,7 +860,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.ClientSize = new System.Drawing.Size(1362, 733);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -827,6 +966,20 @@
         private System.Windows.Forms.ToolStripMenuItem compactModeToolStripMenuItem;
         internal System.Windows.Forms.TrackBar tBVolume;
         internal System.Windows.Forms.Label lblVol;
+        private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.ToolStripMenuItem lyricsNowPlayingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showLyricsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showNowPlayingToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem showBothToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        internal System.Windows.Forms.ListView lstVPlayList;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -17,6 +17,9 @@ namespace Music_Player
         {
             InitializeComponent();
             this.Text = Application.ProductName + " " + Application.ProductVersion;
+            richTextBox1.Visible = false;
+            lstVPlayList.Visible = true;
+            lstVPlayList.Dock = DockStyle.Fill;
         }
          
         #region Different classes needed
@@ -43,7 +46,6 @@ namespace Music_Player
             Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Cdou Music Player"));
             try
             {
-
                 if (File.Exists(defaultPlayList) == true)
                 {
                     goto LoadListView;
@@ -105,13 +107,13 @@ namespace Music_Player
         }
         public void songPlay(string songPath1)
         {
-            
             playSong = songPath1;
+            lstVPlayList.Focus();
             try
             {
-                //StreamWriter sw = new StreamWriter(filePath);
-                //sw.WriteLine("Hello");
-
+                var item = listView1.FindItemWithText(playSong);
+                int songIndex = listView1.Items.IndexOf(item);
+                listView1.EnsureVisible(songIndex);
                 waveOutDevice.Dispose();
                 reader = new AudioFileReader(playSong);
                 waveOutDevice.Init(reader);
@@ -132,7 +134,23 @@ namespace Music_Player
 
                 btnPlay.Visible = false;
                 btnPause.Visible = true;
-               
+
+                String[] dataSong2 = { dataS.songTitle(playSong), dataS.songLength(playSong).ToString(@"mm\:ss") };
+                lstVPlayList.Items.Add(playSong).SubItems.AddRange(dataSong2);
+                var songItem = lstVPlayList.FindItemWithText(songPath);
+                int song1Index = lstVPlayList.Items.IndexOf(songItem);
+                
+
+                if (lstVPlayList.Items.Count == 1)
+                {
+                    lstVPlayList.Items[0].Selected = true;
+                }
+                else
+                {
+                    var itemSelected = listView1.SelectedItems[0];
+                    int song2Index = lstVPlayList.Items.IndexOf(itemSelected);
+                    lstVPlayList.Items[song2Index].Selected = false;
+                }
             }
             catch(ArgumentNullException exNull)
             {
@@ -142,6 +160,7 @@ namespace Music_Player
             {
                 MessageBox.Show(ex.Message);
             }
+            
 
         }
         private void listView1_DoubleClick(object sender, EventArgs e)
@@ -157,10 +176,11 @@ namespace Music_Player
                     sWriter.Dispose();
                     sWriter.Close();
                 }
+                
             }
             catch(Exception ex)
             {
-               // MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -179,7 +199,7 @@ namespace Music_Player
             }
             catch (Exception ex)
             {
-                //Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select a song to play first \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void deleteFromFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -381,9 +401,9 @@ namespace Music_Player
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-               // MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+               //MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         private void bntStop_Click(object sender, EventArgs e)
@@ -402,6 +422,7 @@ namespace Music_Player
             //play the next song on the list
             try
             {
+                string Nextsong = null;
                 numPrev = 1;
                 int rndIndex = rnd.Next(0, listView1.Items.Count - 1);
                 btnPlay.Visible = false;
@@ -409,24 +430,31 @@ namespace Music_Player
                 var nowSong = listView1.FindItemWithText(dataS.songTitle(playSong)); 
                 int songIndex = listView1.Items.IndexOf(nowSong);
                 listView1.Items[songIndex].Selected = false;
-                if (songIndex == listView1.Items.Count-1)
+                if (songIndex == listView1.Items.Count - 1)
                 {
                     songIndex = 0;
+                    Nextsong = listView1.Items[songIndex].Text;
+                    songPlay(Nextsong);
+                    listView1.Items[songIndex].Selected = true;
+                    listView1.Select();
                 }
                 else if (shuffleOn == true)
                 {
                     songIndex = rndIndex;
+                    Nextsong = listView1.Items[songIndex].Text;
+                    songPlay(Nextsong);
+                    listView1.Items[songIndex].Selected = true;
+                    listView1.Select();
                 }
                 else
                 {
-                    songIndex = songIndex + 1;
+                    Nextsong = listView1.Items[songIndex+1].Text;
+                    songPlay(Nextsong);
+                    listView1.Items[songIndex+1].Selected = true;
+                    listView1.Select();
                 }
 
-                listView1.Items[songIndex].Selected = true;
-                listView1.Select();
-            
-                string Nextsong= listView1.Items[songIndex].Text;
-                songPlay(Nextsong);
+                
                 using (TextWriter sWriter = new StreamWriter(filePath, append: true))
                 {
                     sWriter.WriteLine(Nextsong);
@@ -530,7 +558,6 @@ namespace Music_Player
             catch(UnauthorizedAccessException ex)
             {
                 MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                //Application.Exit();
             }
             return result;
         }
@@ -754,7 +781,7 @@ namespace Music_Player
 
                                     listView1.Items.Add(songsF[k]).SubItems.AddRange(songMetaData);
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
 
                                 {
                                     //MessageBox.Show(ex.Message,"Error");
@@ -783,7 +810,7 @@ namespace Music_Player
                                     listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
                                     x++;
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     //MessageBox.Show(ex.Message, "Error");
                                     //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
@@ -816,7 +843,7 @@ namespace Music_Player
 
                                     listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
                                 }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 //MessageBox.Show(ex.Message, "Error");
                                 //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
@@ -845,7 +872,7 @@ namespace Music_Player
 
                                     listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     //MessageBox.Show(ex.Message, "Error");
                                     //listView1.Items.Add(fil).SubItems.Add(fileInfo.Name);
@@ -928,16 +955,26 @@ namespace Music_Player
                 //File.Create(save.FileName);
                 using (StreamWriter sw = new StreamWriter(save.FileName))
                 {
-                    for(int x=0;x<listView1.SelectedItems.Count;x++)
+                    if (listView1.SelectedItems.Count > 0)
                     {
-                        sw.WriteLine(listView1.SelectedItems[x].Text);
+                        for (int x = 0; x < listView1.SelectedItems.Count; x++)
+                        {
+                            sw.WriteLine(listView1.Items[x].Text);
+                        }
+                    }
+                    else if (listView1.SelectedItems.Count == 0)
+                    {
+                        for (int x = 0; x < listView1.Items.Count; x++)
+                        {
+                            sw.WriteLine(listView1.Items[x].Text);
+                        }
                     }
                     sw.Close();
                 }
             }
         }
 
-        private void loadPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadPlaylistToolStripMenuItem_Click(object sender, EventArgs e)//
         {
             OpenFileDialog openFile = new OpenFileDialog();
 
@@ -967,7 +1004,7 @@ namespace Music_Player
                                 listView1.Items.Add(songsF[k]).SubItems.AddRange(songMetaData);
                             }
 
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 //MessageBox.Show(ex.Message, "Error");
                             }
@@ -992,7 +1029,7 @@ namespace Music_Player
 
                                 listView1.Items.Add(fil).SubItems.AddRange(songMetaData);
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 //MessageBox.Show(ex.Message, "Error");
                             }
@@ -1051,6 +1088,10 @@ namespace Music_Player
             this.tBVolume.Width = 90;
             this.WindowState = FormWindowState.Normal;
             this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            label2.Visible = true;
+            label4.Visible = true;
+
         }
 
         private void fullModeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1083,6 +1124,78 @@ namespace Music_Player
             this.label1.Location = new System.Drawing.Point(330, 12);
             this.lblVol.Location = new System.Drawing.Point(1229, 35);
             this.label3.Location = new System.Drawing.Point(1215, 55);
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+
+            label2.Visible = false;
+            label4.Visible = false;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.Filter= "MP3 File|*.mp3";
+            if (openFileDialog2.ShowDialog()== DialogResult.OK)
+            {
+                songPlay(openFileDialog2.FileName);
+            }
+        }
+
+        private void showLyricsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Visible = true;
+            lstVPlayList.Visible = false;
+        }
+
+        private void showNowPlayingToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Visible = false;
+            lstVPlayList.Visible = true;
+            lstVPlayList.Dock = DockStyle.Fill;
+        }
+
+        private void showBothToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Visible = true;
+            lstVPlayList.Visible = true;
+            lstVPlayList.Dock = DockStyle.Bottom;
+        }
+
+        private void lstVPlayList_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                string listSong = lstVPlayList.SelectedItems[0].Text;
+                string[] allPlayed = File.ReadAllLines(filePath);
+                songPlay(listSong);
+            }
+            catch (Exception) { };
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        Color defaultColor;
+        private void label2_MouseEnter(object sender, EventArgs e)
+        {
+            defaultColor= label2.BackColor;
+            label2.BackColor = Color.Black;
+        }
+
+        private void label2_MouseLeave(object sender, EventArgs e)
+        {
+            label2.BackColor = defaultColor;
+            MessageBox.Show(defaultColor.ToArgb().ToString());
         }
     }
 }
