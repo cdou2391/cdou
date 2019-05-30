@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Music Library");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Music Library");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -327,10 +327,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(1);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Music Library";
+            treeNode3.Name = "Node0";
+            treeNode3.Text = "Music Library";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode3});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(197, 426);
             this.treeView1.TabIndex = 0;
@@ -485,7 +485,7 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "Open Folder";
             this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
@@ -493,19 +493,19 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(136, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -523,6 +523,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1362, 23);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
             // 
             // viewToolStripMenuItem
             // 
@@ -538,14 +539,14 @@
             // fullModeToolStripMenuItem
             // 
             this.fullModeToolStripMenuItem.Name = "fullModeToolStripMenuItem";
-            this.fullModeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.fullModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fullModeToolStripMenuItem.Text = "Full Mode";
             this.fullModeToolStripMenuItem.Click += new System.EventHandler(this.fullModeToolStripMenuItem_Click);
             // 
             // compactModeToolStripMenuItem
             // 
             this.compactModeToolStripMenuItem.Name = "compactModeToolStripMenuItem";
-            this.compactModeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.compactModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.compactModeToolStripMenuItem.Text = "Compact Mode";
             this.compactModeToolStripMenuItem.Click += new System.EventHandler(this.compactModeToolStripMenuItem_Click);
             // 
@@ -556,7 +557,7 @@
             this.showNowPlayingToolStripMenuItem1,
             this.showBothToolStripMenuItem});
             this.lyricsNowPlayingToolStripMenuItem.Name = "lyricsNowPlayingToolStripMenuItem";
-            this.lyricsNowPlayingToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.lyricsNowPlayingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lyricsNowPlayingToolStripMenuItem.Text = "Lyrics\\Now Playing";
             // 
             // showLyricsToolStripMenuItem

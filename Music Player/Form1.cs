@@ -401,9 +401,9 @@ namespace Music_Player
                     }
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-               //MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+               MessageBox.Show("Select a song to play first \r\n" + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         private void bntStop_Click(object sender, EventArgs e)
@@ -1196,6 +1196,16 @@ namespace Music_Player
         {
             label2.BackColor = defaultColor;
             MessageBox.Show(defaultColor.ToArgb().ToString());
+        }
+
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void EventLog2_EntryWritten(object sender, EntryWrittenEventArgs e)
+        {
+
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Music_Player
             IPicture  songArt = song.Tag.Pictures.FirstOrDefault();
             MemoryStream stream = new MemoryStream();
             Bitmap bm;
-            Bitmap defaultImg = new Bitmap(@"A:\Documents\Visual Studio 2015\Projects\Music Player\Music Player\bin\Debug\images.jpg");
+            Bitmap defaultImg = new Bitmap(@"C:\Users\crugamba\source\repos\cdouMusicPlayer2\Music Player\bin\Debug\images.jpg");
             if (songArt == null)
             {
                 bm = defaultImg;
